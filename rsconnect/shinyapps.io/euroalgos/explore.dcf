@@ -1,0 +1,13 @@
+name: explore
+title: explore
+username: euroalgos
+account: euroalgos
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 12747706
+bundleId: 9116221
+url: https://euroalgos.shinyapps.io/explore/
+version: 1
+asMultiple: FALSE
+asStatic: FALSE
+ignoredFiles: .Rbuildignore|data/color_dat.rds|README.md|README.Rmd

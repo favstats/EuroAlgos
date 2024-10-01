@@ -18,113 +18,113 @@ main-color: "#6cabdd"
 <style>
 
 .percentage-box {
-  display: flex;
-  align-items: center;
-  margin-bottom: 20px;
-  margin-right: 15px;
+display: flex;
+align-items: center;
+margin-bottom: 20px;
+margin-right: 15px;
 }
 
 .percentage {
-  font-size: 2em;
-  font-weight: bold;
-  color: #D9534F;
-  margin-right: 15px;
+font-size: 2em;
+font-weight: bold;
+color: #D9534F;
+margin-right: 15px;
 }
 
 .text-box {
-  font-size: 1em;
+font-size: 1em;
 }
 
 .separator {
-  margin: 20px 0;
-  border-bottom: 1px solid #ddd;
+margin: 20px 0;
+border-bottom: 1px solid #ddd;
 }
 
 .flex-container {
-  display: flex;
-  flex-direction: column;
+display: flex;
+flex-direction: column;
 }
 
 .plot-container {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-top: 20px;
+display: flex;
+align-items: center;
+justify-content: space-between;
+margin-top: 20px;
 }
 
 .plot-text {
-  width: 45%;
+width: 45%;
 }
 
 .plot-figure {
-  width: 50%;
+width: 50%;
 }
 
 
 #toc {
-  background-color: #f8f9fa; /* Light grey background */
-  border-radius: 8px;
-  padding: 20px;
-  margin-bottom: 30px;
-  width: auto;
+background-color: #f8f9fa; /* Light grey background */
+border-radius: 8px;
+padding: 20px;
+margin-bottom: 30px;
+width: auto;
 }
 
 #toc h2 {
-  font-size: 1.5em;
-  font-weight: bold;
-  color: #333;
-  margin-top: 0;
+font-size: 1.5em;
+font-weight: bold;
+color: #333;
+margin-top: 0;
 }
 
 #toc ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
+list-style: none;
+padding: 0;
+margin: 0;
 }
 
 #toc ul ul {
-  margin-left: 20px;
+margin-left: 20px;
 }
 
 #toc li {
-  margin-bottom: 10px;
-  display: flex;
-  justify-content: space-between;
+margin-bottom: 10px;
+display: flex;
+justify-content: space-between;
 }
 
 #toc a {
-  text-decoration: none;
-  color: #337ab7;
-  font-weight: 500;
+text-decoration: none;
+color: #337ab7;
+font-weight: 500;
 }
 
 #toc a:hover {
-  text-decoration: underline;
+text-decoration: underline;
 }
 
 .toc-page-number {
-  color: #777;
-  font-weight: normal;
-  margin-left: 10px;
-  flex-shrink: 0;
+color: #777;
+font-weight: normal;
+margin-left: 10px;
+flex-shrink: 0;
 }
 
 p {
-    text-align: justify;
+text-align: justify;
 }
 
 </style>
 
 <script>
 document.addEventListener("DOMContentLoaded", function() {
-  var tocItems = document.querySelectorAll("#toc a");
-  tocItems.forEach(function(item) {
-    var target = document.querySelector(item.getAttribute("href"));
-    if (target) {
-      var pageNumber = Math.floor((target.offsetTop / window.innerHeight) + 1);
-      item.nextElementSibling.textContent = ' - - - - - - - - - - - ' + pageNumber;
-    }
-  });
+var tocItems = document.querySelectorAll("#toc a");
+tocItems.forEach(function(item) {
+var target = document.querySelector(item.getAttribute("href"));
+if (target) {
+var pageNumber = Math.floor((target.offsetTop / window.innerHeight) + 1);
+item.nextElementSibling.textContent = ' - - - - - - - - - - - ' + pageNumber;
+}
+});
 });
 </script>
 
@@ -132,16 +132,55 @@ document.addEventListener("DOMContentLoaded", function() {
 ```{r, results='asis', echo = F}
 toc_html <- '
 <div id="toc">
-  <h2>Table of Contents</h2>
+  <h2>Part 1: Summary</h2>
+  <table style="width:100%; border-collapse: collapse;">
+    <tr>
+      <td style="padding-bottom: 5px;"><a href="#executive-summary">1. Executive Summary</a></td>
+      <td style="text-align: right;">- - - - - - - - - - - - 2</td>
+    </tr>
+    <tr>
+      <td style="padding-left: 20px;"><a href="#country-differences">I. Country Differences</a></td>
+      <td style="text-align: right;">- - - - - - - - - - - - 7</td>
+    </tr>
+    <tr>
+      <td style="padding-left: 20px;"><a href="#audience-differences">II. Audience Differences</a></td>
+      <td style="text-align: right;">- - - - - - - - - - - - 7</td>
+    </tr>
+    <tr>
+      <td style="padding-left: 20px;"><a href="#party-differences">III. Party Differences</a></td>
+      <td style="text-align: right;">- - - - - - - - - - - 10</td>
+    </tr>
+    <tr>
+      <td style="padding-left: 20px;"><a href="#factors-affecting-ad-delivery">IV. Factors Affecting Ad Delivery</a></td>
+      <td style="text-align: right;">- - - - - - - - - - - 11</td>
+    </tr>
+    <tr>
+      <td style="padding-left: 20px;"><a href="#demographic-based-price-variations">V. Demographic-Based Price Variations</a></td>
+      <td style="text-align: right;">- - - - - - - - - - - 12</td>
+    </tr>
+    <tr>
+      <td><a href="#conclusions">2. Conclusions</a></td>
+      <td style="text-align: right;">- - - - - - - - - - - 14</td>
+    </tr>
+    <tr>
+      <td><a href="#recommendations">3. Recommendations</a></td>
+      <td style="text-align: right;">- - - - - - - - - - - 14</td>
+    </tr>
+  </table>
+</div>
+'
+shiny::HTML(toc_html)
+```
+
+
+```{r, results='asis', echo = F}
+toc_html <- '
+<div id="toc">
+  <h2>Part 2: Detailed Report</h2>
   <ul>
-    <li><a href="#researchers">1. Researchers</a><span class="toc-page-number">- - - - - - - - - - - 3</span></li>
-    <li><a href="#executive-summary">2. Executive Summary</a><span class="toc-page-number">- - - - - - - - - - - 2</span>
-    <li><a href="#introduction">3. Introduction</a><span class="toc-page-number">- - - - - - - - - - - 6</span></li>
-    <li><a href="#overview">4. Overview of Parties</a><span class="toc-page-number">- - - - - - - - - - - 7</span>
-    <li><a href="#results">5. Results</a><span class="toc-page-number">- - - - - - - - - - - 10</span></li>
-    <li><a href="#conclusions">6. Conclusion</a><span class="toc-page-number">- - - - - - - - - - - 11</span></li>
-    <li><a href="#recommendations">7. Recommendations</a><span class="toc-page-number">- - - - - - - - - - - 12</span></li>
-    <li><a href="#implementation">8. Implementation</a><span class="toc-page-number">- - - - - - - - - - - 13</span></li>
+    <li><a href="#introduction">1. Introduction</a><span class="toc-page-number">- - - - - - - - - - - 6</span></li>
+    <li><a href="#overview">2. Overview of Parties</a><span class="toc-page-number">- - - - - - - - - - - 7</span>
+    <li><a href="#results">3. Results</a><span class="toc-page-number">- - - - - - - - - - - 10</span></li>
     <li><a href="#methodology">9. Methodology and Hypothesis Testing</a><span class="toc-page-number">- - - - - - - - - - - 14</span>
 
   </ul>
@@ -151,8 +190,6 @@ toc_html <- '
 shiny::HTML(toc_html)
 
 ```
-
-
 
 ```{r setup, include=FALSE}
 library(tidyverse)
@@ -179,89 +216,30 @@ source("utils.R")
 #   scale_x_log10()
 ```
 
-# Researchers
-
-The research team for this study includes scholars from a range of academic institutions across Europe and North America. Their combined expertise spans algorihtmic governance, political communication, and electoral behavior. They made this comprehensive analysis of ad delivery algorithms in the 2024 European Parliament elections possible.
-
-```{r}
-library(gt)
-
-# Create a data frame with authors and affiliations
-authors_data <- tibble::tibble(
-  Name = c(
-    "Andrea Ceron", 
-    "Anamaria Dutceac Segesten", 
-    "Benjamin Guinaudeau", 
-    "Christina Gahn", 
-    "Claes de Vreese", 
-    "Fabio Votta", 
-    "James P. Cross", 
-    "Jan Zilinsky", 
-    "Linn Sandberg", 
-    "Mads Fuglsang Hove", 
-    "Marton Bene", 
-    "Ruth Dassonneville", 
-    "Simon Kruschinski", 
-    "Tom Dobber"
-  ),
-  Affiliation = c(
-    "University of Milan", 
-    "Lund University", 
-    "New York University", 
-    "University of Vienna", 
-    "University of Amsterdam", 
-    "University of Amsterdam", 
-    "University College Dublin", 
-    "University of Munich", 
-    "Lund University", 
-    "University of Amsterdam", 
-    "Hungarian Academy of Sciences", 
-    "University of Montreal", 
-    "Johannes Gutenberg University Mainz", 
-    "University of Amsterdam"
-  )
-)
-
-# Create a gt table
-authors_data %>%
-  gt() %>%
-  tab_header(
-    title = md("**Researchers and Affiliations**")
-  ) %>%
-  cols_label(
-    Name = "Researcher",
-    Affiliation = "Affiliation"
-  ) %>%
-  tab_options(
-    table.font.size = px(12),
-    table.width = pct(100)
-  ) %>%
-  # data_color(
-  #   columns = vars(Name,Affiliation),
-  #   colors = scales::col_factor(
-  #     palette = "Blues", domain = authors_data$Affiliation
-  #   )
-  # ) %>%
-  tab_style(
-    style = list(
-      cell_text(weight = "bold")
-    ),
-    locations = cells_column_labels(everything())
-  )
-
-```
 
 
 # Executive Summary
 
-This study seeks to understand how Facebook's ad delivery algorithms affected the pricing and distribution of political advertisements during the 2024 European Parliament elections. By working with political parties across the EU to place neutral "get-out-the-vote" ads, we've uncovered significant insights into potential biases in ad pricing and delivery.
+This study seeks to understand how Facebook’s ad delivery algorithms affected the pricing and distribution of political advertisements during the 2024 European Parliament elections. By collaborating with political parties across the EU, we placed neutral “get-out-the-vote” ads using identical targeting criteria with the same budgets, that ran simultaneously across 8 European countries for seven days. The only factors that differed between the ads were the country, the language of the advertisement, and the advertising party and for this reason differences observed between countries and parties may suggest a bias in Facebook's ad delivery algorithm. Our findings highlight significant variations in both ad costs and reach, across parties, target audiences, and political parties, which could suggest bias in how Facebook delivers political ads across different contexts.
 
+
+```{r}
+note_html <- '
+<div style="background-color: #f9f9f9; border-left: 6px solid #6cabdd; padding: 16px; margin-bottom: 20px;">
+  <strong>Important Note:</strong> The findings presented in this report are based on a preliminary, descriptive analysis that has not yet undergone peer review. 
+  As such, the results should be interpreted with caution. For formal citations and further reference, please consult the working paper, which will be available at the following link by November 1st 2024: <a href="[OSF LINK]">click here</a>.
+</div>
+'
+
+shiny::HTML(note_html)
+
+```
 
 ### Country Differences
 
 
 
-The price of reaching voters through Facebook ads varies dramatically across countries, with a striking 321% difference between the highest and lowest average prices. This means that *a campaign that reaches 100 000 voters in one country might only reach 23 750 in another*.
+The price of reaching voters through Facebook ads varies dramatically across countries, with a striking 321% difference between the highest and lowest average prices. This means that *a campaign that reaches 100000 voters in one country might only reach 25000 in another*.
 
 
 
@@ -278,7 +256,7 @@ overview <- readRDS("data/thedat.rds")  %>%
 
 overview <- overview %>% 
   mutate_at(vars("last7days_spend", "last30days_spend", "last90days_spend", "historic_spend"), 
-            ~log((.x / 1000) + 1)) %>%
+            ~sqrt((.x / 1000))) %>%
   rename_at(vars("last7days_spend", "last30days_spend", "last90days_spend", "historic_spend"), ~paste0(., "2")) %>%
   # Keep original variables
   bind_cols(overview %>% select(last7days_spend, last30days_spend, last90days_spend, historic_spend)) %>% 
@@ -290,9 +268,6 @@ ov <- overview %>%
   filter(starts == as.Date("2024-04-29")) %>%
   # filter(starts %in% c(as.Date("2024-04-29"), as.Date("2024-04-30"))) %>% 
   filter(party != "Les Engagés")
-
-
-
 
 parties_had_to_excluded <- overview %>% 
   select(party) %>% 
@@ -318,76 +293,73 @@ country_avg_prices_reach <- ov %>%
             avg_reach = mean(reach)) %>%
   arrange(cntry)
 
-# Function to calculate price and reach differences
-calculate_price_and_reach_differences <- function(data) {
-  n <- nrow(data)
-  country_combinations <- combn(seq_len(n), 2, simplify = FALSE)
-  
-  results <- map_dfr(country_combinations, function(pair) {
-    idx1 <- pair[1]
-    idx2 <- pair[2]
-    
-    country1 <- data$cntry[idx1]
-    country2 <- data$cntry[idx2]
-    
-    price1 <- data$avg_price[idx1]
-    price2 <- data$avg_price[idx2]
-    
-    reach1 <- data$avg_reach[idx1]
-    reach2 <- data$avg_reach[idx2]
-    
-    price_diff <- price1 - price2
-    reach_diff <- reach1 - reach2
-    
-    tibble(
-      country1 = country1,
-      country2 = country2,
-      price_difference = price_diff,
-      percentage_difference_original = (price_diff / price2) * 100,
-      percentage_difference_lower = (price_diff / min(price1, price2)) * 100,
-      percentage_difference_higher = (price_diff / max(price1, price2)) * 100,
-      reach_difference = reach_diff,
-      reach_diff_original = (reach_diff / reach2) * 100,
-      reach_diff_lower = (reach_diff / min(reach1, reach2)) * 100,
-      reach_diff_higher = (reach_diff / max(reach1, reach2)) * 100
-    )
-  })
-  
-  results %>% arrange(desc(abs(price_difference)))
-}
+median_country <- country_avg_prices_reach %>%
+  filter(avg_price == median(avg_price)) 
 
-# Use the function to calculate price and reach differences
-price_and_reach_differences <- calculate_price_and_reach_differences(country_avg_prices_reach)
+price_and_reach_differences <- expand_grid(
+  country_avg_prices_reach %>% rename_all(~paste0(.x, "_1")), 
+  country_avg_prices_reach %>% rename_all(~paste0(.x, "_2"))
+) %>%
+  mutate(
+    price_diff = avg_price_1 - avg_price_2, 
+    reach_diff = avg_reach_1 - avg_reach_2
+  ) %>%
+  transmute(
+    country1 = cntry_1, 
+    country2 = cntry_2, 
+    avg_price_1, avg_price_2,
+    
+    price_difference = price_diff, 
+    
+    percentage_difference_original = (price_diff / avg_price_2) * 100,
+    
+    reach_difference = reach_diff,
+    reach_diff_original = (reach_diff / avg_reach_2)
+    
+  ) %>%
+  arrange(desc(price_difference)) 
 
-# View the results
-# price_and_reach_differences
+# price_and_reach_differences %>%
+#   filter(abs(percentage_difference_original) == max(abs(percentage_difference_original))) %>%
+#   mutate(reach_difference_per1000 = reach_difference/7*100) %>%
+#   glimpse
 
+# price_and_reach_differences %>%
+#   filter(country2 == median_country$cntry) %>%
+#   glimpse
 ```
 
 ```{r}
+# Calculate average and maximum price differences and reach differences
 price_diff_lab <- glue::glue(paste0(round(mean(abs(price_and_reach_differences$price_difference)), 2)))
-perc_max_lab <- paste0(round(max(abs(price_and_reach_differences$percentage_difference_lower))), "%")
-perc_avg_lab <- paste0(round(mean(abs(price_and_reach_differences$percentage_difference_lower))), "%")
-reach_diff_lab <- paste0(scales::number(round(mean(abs(price_and_reach_differences$reach_difference)))))
-reach_max_lab <- paste0(scales::number(round(max(abs(price_and_reach_differences$reach_difference)))))
+perc_max_lab <- paste0(round(max(abs(price_and_reach_differences$percentage_difference_original))), "%")
+perc_avg_lab <- paste0(round(mean(abs(price_and_reach_differences$percentage_difference_original))), "%")
+# Calculate average and maximum reach differences (if not already calculated)
+reach_diff_lab <- paste0(scales::number(ceiling(mean(abs(price_and_reach_differences$reach_difference))/ 1000) * 1000))
+reach_max_lab <- paste0(scales::number(ceiling(max(abs(price_and_reach_differences$reach_difference)) / 1000) * 1000))
 
+# HTML output with the updated structure and more specific reference to reach differences
 shiny::HTML(percentage_section(data.frame(
   Percentage = c(perc_avg_lab, perc_max_lab),
   Title = c("Average Price Disparity Between Countries",
             "Maximum Price Disparity Between Countries"),
   Subtitle = c(
-    glue::glue("On average, prices between countries differ by {price_diff_lab} EUR or {perc_avg_lab}. This leads to a difference of {reach_diff_lab} people being reached on average."),
-    glue::glue("Highest price vs. lowest (Denmark vs Hungary). This leads to a difference of {reach_max_lab} people being reached between the two countries on average.")),
+    # Be more specific about reach in higher paying countries
+    glue::glue("On average, prices between countries differ by {price_diff_lab} EUR or {perc_avg_lab}. As a result, advertisers in higher paying countries can reach {reach_diff_lab} fewer people on average."),
+    
+    # Reformulated maximum price disparity with rounded reach difference example
+    glue::glue("Highest price vs. lowest (Denmark vs Hungary). As a result, advertisers in Denmark reach on average almost {reach_max_lab} fewer people when placing the same ad, targeting the same people, than advertisers in Hungary.")
+  ),
   stringsAsFactors = FALSE
 )))
+
+
 ```
 
 
 ### Audience Differences
 
 ```{r}
-# Load necessary libraries
-library(tidyverse)
 
 # Calculate average price and reach for each audience within each country
 country_audience_avg_prices <- ov %>%
@@ -396,54 +368,74 @@ country_audience_avg_prices <- ov %>%
             avg_reach = mean(reach)) %>%
   arrange(cntry, audience)
 
-# Function to calculate price differences by audience, with "No Targeting" as the base
-calculate_audience_price_differences <- function(prices) {
-  # Iterate over unique countries
-  unique_countries <- unique(prices$cntry)
-  
-  results <- map_dfr(unique_countries, function(country) {
-    # Filter data for the current country
-    country_data <- prices %>% filter(cntry == country)
-    
-    # Check if "No Targeting" exists in the data for this country
-    no_targeting_data <- country_data %>% filter(audience == "No Targeting ad")
-    
-    # If "No Targeting" is present, compare it to all other audiences
-    if (nrow(no_targeting_data) == 1) {
-      base_price <- no_targeting_data$avg_price
-      base_reach <- no_targeting_data$avg_reach
-      
-      # Filter out "No Targeting" for comparisons and calculate differences
-      country_data %>%
-        filter(audience != "No Targeting") %>%
-        mutate(
-          price_difference = avg_price - base_price,
-          reach_difference = avg_reach - base_reach,
-          percentage_price_difference = (price_difference / base_price) * 100,
-          percentage_reach_difference = (reach_difference / base_reach) * 100
-        ) %>%
-        select(cntry, audience, price_difference, reach_difference, percentage_price_difference, percentage_reach_difference)
-    }
-  })
-  
-  # Arrange the results by descending absolute price differences
-  results %>% arrange(desc(abs(price_difference)))
-}
 
-# Calculate and display price differences by audience with "No Targeting" as the base
-audience_price_differences <- calculate_audience_price_differences(country_audience_avg_prices)
+# Filter and calculate differences between No Targeting and specific audiences (Political Interest, Education)
+audience_price_differences <- expand_grid(
+  country_audience_avg_prices %>% rename_all(~paste0(.x, "_1")), 
+  country_audience_avg_prices %>% rename_all(~paste0(.x, "_2"))
+) %>%
+  filter((cntry_1 == cntry_2 & audience_2 == "No Targeting ad" & 
+          audience_1 %in% c("Politics ad", "Education ad"))) %>%
+  mutate(
+    price_diff = avg_price_1 - avg_price_2, 
+    reach_diff = avg_reach_1 - avg_reach_2
+  ) %>%
+  transmute(
+    country = cntry_1, 
+    audience_1, audience_2,
+    price_difference = price_diff, 
+    percentage_difference_original = (price_diff / avg_price_2) * 100,
+    reach_difference = reach_diff,
+    reach_diff_original = (reach_diff / avg_reach_2) * 100
+  ) %>%
+  arrange(desc(abs(price_difference)))
 
-# View the results
-# audience_price_differences
 
-# View the results
-# audience_price_differences
+# Political Interest vs No Targeting
+politics_vs_no_targeting <- audience_price_differences %>%
+  filter(audience_1 == "Politics ad") %>%
+  summarize(
+    avg_price_diff = mean(price_difference),
+    avg_reach_diff = mean(reach_difference),
+    perc_price_diff = mean(percentage_difference_original),
+    max_price_diff = max(price_difference),
+    max_reach_diff = max(reach_difference)
+  )
 
+# Education vs No Targeting
+education_vs_no_targeting <- audience_price_differences %>%
+  filter(audience_1 == "Education ad") %>%
+  summarize(
+    avg_price_diff = mean(price_difference),
+    avg_reach_diff = mean(reach_difference),
+    perc_price_diff = mean(percentage_difference_original),
+    max_price_diff = max(price_difference),
+    max_reach_diff = max(reach_difference)
+  )
+
+# Step 3: Prepare Labels for Summary Data
+
+# Format the labels for Political Interest and Education targeting differences
+politics_avg_price_diff_label <- glue::glue("{round(politics_vs_no_targeting$avg_price_diff, 2)} EUR")
+politics_avg_reach_diff_label <- scales::number(ceiling(abs(politics_vs_no_targeting$avg_reach_diff) / 1000) * 1000)
+education_avg_price_diff_label <- glue::glue("{round(education_vs_no_targeting$avg_price_diff, 2)} EUR")
+education_avg_reach_diff_label <- scales::number(ceiling(abs(education_vs_no_targeting$avg_reach_diff) / 1000) * 1000)
+
+# Step 4: Existing Rows (for average and max price differences)
 price_diff_lab <- glue::glue(paste0(round(mean(abs(audience_price_differences$price_difference)), 2)))
-perc_max_lab <- paste0(round(max(abs(audience_price_differences$percentage_price_difference))), "%")
-perc_avg_lab <- paste0(round(mean(abs(audience_price_differences$percentage_price_difference))), "%")
-reach_diff_lab <- paste0(scales::number(round(mean(abs(audience_price_differences$reach_difference)))))
-reach_max_lab <- paste0(scales::number(round(max(abs(audience_price_differences$reach_difference)))))
+perc_max_lab <- paste0(round(max(abs(audience_price_differences$percentage_difference_original))), "%")
+perc_avg_lab <- paste0(round(mean(abs(audience_price_differences$percentage_difference_original))), "%")
+reach_diff_lab <- paste0(scales::number(ceiling(mean(abs(audience_price_differences$reach_difference)) / 1000) * 1000))
+reach_max_lab <- paste0(scales::number(ceiling(max(abs(audience_price_differences$reach_difference)) / 1000) * 1000))
+
+# 
+# # Summarize the price and reach differences
+# price_diff_lab <- glue::glue(paste0(round(mean(abs(audience_price_differences$price_difference)), 2)))
+# perc_max_lab <- paste0(round(max(abs(audience_price_differences$percentage_difference_original))), "%")
+# perc_avg_lab <- paste0(round(mean(abs(audience_price_differences$percentage_difference_original))), "%")
+# reach_diff_lab <- paste0(scales::number(ceiling(mean(abs(audience_price_differences$reach_difference)) / 1000) * 1000))
+# reach_max_lab <- paste0(scales::number(ceiling(max(abs(audience_price_differences$reach_difference)) / 1000) * 1000))
+
 # print(price_diff_lab)
 # print(perc_max_lab)
 # print(perc_avg_lab)
@@ -452,31 +444,60 @@ reach_max_lab <- paste0(scales::number(round(max(abs(audience_price_differences$
 
 ```
 
+```{r}
+# Update the narrative text to reflect the calculated differences
+narrative_text <- glue::glue("
+Political parties encounter significant differences in advertising costs depending on their audience targeting choices. 
+On average, more specific targeting was observed to be more expensive compared to no targeting criteria. 
+For example, ads targeting individuals with an interest in politics were, on average, {perc_avg_lab} more expensive, 
+while education-based targeting could increase costs by as much as {perc_max_lab} in some countries.
+")
 
-Political parties encounter significant differences in advertising costs depending on their audience targeting choices. On average, more specific targeting was observed to be more expensive compared to when we chose no targeting criteria. For example, ads targeting individuals with an interest in politics were, on average, `r perc_avg_lab` more expensive, while education-based targeting could increase costs by as much as `r perc_max_lab` in some countries.
+```
+
+`r narrative_text` 
 
 
 
 ```{r}
-# Data for Audience Targeting Differences (Key Stats)
-targeting_difference_data <- data.frame(
-  Percentage = c(perc_avg_lab, perc_max_lab),
-  Title = c("Average Targeting Price Increase", 
-            "Maximum Targeting Price Increase"),
-  Subtitle = c(glue::glue("On average, targeted ads cost {price_diff_lab} EUR more, with a price increase of {perc_avg_lab}. This results in a reduction of {reach_diff_lab} people on average."),
-               glue::glue("The largest price increase observed was {perc_max_lab} when targeting people with below-university education, resulting in a reach reduction of {reach_max_lab} people.")),
+# Step 1: Update the text to clarify what the percentage increase means in EUR
+# Calculate additional variables for price comparisons
+politics_price_increase_label <- glue::glue("{round(1 + (politics_vs_no_targeting$perc_price_diff / 100), 2)}€")
+education_price_increase_label <- glue::glue("{round(1 + (education_vs_no_targeting$perc_price_diff / 100), 2)}€")
+
+# Step 4: Combine Existing Data with New Rows for Political Interest and Education
+combined_targeting_data <- data.frame(
+  Percentage = c(
+    perc_avg_lab, 
+    paste0(round(politics_vs_no_targeting$perc_price_diff), "%"), 
+    paste0(round(education_vs_no_targeting$perc_price_diff), "%")
+  ),
+  Title = c(
+    "Average Targeting Price Increase", 
+    "Price Increase for Political Interested vs. No Targeting", 
+    "Price Increase for Education vs. No Targeting"
+  ),
+  Subtitle = c(
+    # Average Price Disparity Between Countries
+    glue::glue("On average, targeted ads cost {price_diff_lab}€ more than non-targeted ads. This means that advertisers who target their ads can on average reach almost {reach_diff_lab} people less than advertisers who do not target their ads."),
+    
+    # Political Interest Targeting vs. No Targeting
+    glue::glue("When targeting people interested in politics, a price of 1€ increases to {politics_price_increase_label}, on average. This means advertisers reach almost {politics_avg_reach_diff_label} fewer people compared to when selecting no targeting criteria."),
+    
+    # Education Targeting vs. No Targeting
+    glue::glue("When targeting people with below-university education, a price of 1€ increases to {education_price_increase_label}, on average. As a result, advertisers reach nearly {education_avg_reach_diff_label} fewer people compared to when selecting no targeting criteria.")
+  ),
   stringsAsFactors = FALSE
 )
 
-# Display Audience Targeting Percentage Section
-shiny::HTML(percentage_section(targeting_difference_data))
+shiny::HTML(percentage_section(combined_targeting_data))
 
 
 ```
 
 
 
-### Party Differences
+### Party Differences Within Countries
 
 ```{r}
 
@@ -484,76 +505,44 @@ shiny::HTML(percentage_section(targeting_difference_data))
 country_party_avg_prices <- ov %>%
   group_by(cntry, party) %>%
   summarize(avg_price = mean(price),
-            avg_reach = mean(reach)) %>%
+            avg_reach = mean(reach), .groups = "drop") %>%
   arrange(cntry)
 
-# Function to calculate price differences by party (only within the same country)
-calculate_party_price_differences <- function(prices) {
-  # Iterate over unique countries
-  unique_countries <- unique(prices$cntry)
-  
-  results <- map_dfr(unique_countries, function(country) {
-    # Filter for only the parties in the same country
-    country_data <- prices %>% filter(cntry == country)
-    
-    # Get the number of parties in that country
-    n <- nrow(country_data)
-    
-    if (n > 1) {
-      # Generate all possible combinations of parties within the country
-      party_combinations <- combn(seq_len(n), 2, simplify = FALSE)
-      
-      # Calculate the price differences for each pair of parties within the country
-      map_dfr(party_combinations, function(pair) {
-        idx1 <- pair[1]
-        idx2 <- pair[2]
-        
-        party1 <- country_data$party[idx1]
-        party2 <- country_data$party[idx2]
-        
-        price1 <- country_data$avg_price[idx1]
-        price2 <- country_data$avg_price[idx2]
-        price_diff <- price1 - price2
-        
-        reach1 <- country_data$avg_reach[idx1]
-        reach2 <- country_data$avg_reach[idx2]
-        reach_diff <- reach1 - reach2
-        
-        tibble(
-          country = country,
-          party1 = party1,
-          party2 = party2,
-          price_difference = price_diff,
-          reach_difference = reach_diff,
-          percentage_difference_original = (price_diff / price2) * 100,
-          percentage_difference_lower = (price_diff / min(price1, price2)) * 100,
-          percentage_difference_higher = (price_diff / max(price1, price2)) * 100,
-      reach_diff_original = (reach_diff / reach2) * 100,
-      reach_diff_lower = (reach_diff / min(reach1, reach2)) * 100,
-      reach_diff_higher = (reach_diff / max(reach1, reach2)) * 100
-        )
-      })
-    }
-  })
-  
-  results %>% arrange(desc(abs(price_difference)))
-}
+mean_countries <- country_party_avg_prices %>%
+  rename(cntry_2 = cntry)
 
-# Calculate and display price differences by party within the same country
-party_price_differences <- calculate_party_price_differences(country_party_avg_prices)
-
-# View the results
-# party_price_differences
+party_price_differences <- country_party_avg_prices %>% 
+  group_by(cntry) %>%
+  mutate(avg_ct_price = mean(avg_price),
+          avg_ct_reach = mean(avg_reach)) %>%
+  ungroup %>%
+  mutate(
+    price_diff = avg_price - avg_ct_price, 
+    reach_diff = avg_reach - avg_ct_reach
+  ) %>%
+  transmute(
+    country = cntry, party, 
+    avg_price, avg_ct_price,
+    
+    price_difference = price_diff, 
+    
+    percentage_difference_original = (price_diff / avg_ct_price) * 100,
+    
+    reach_difference = reach_diff,
+    reach_diff_original = (reach_diff / avg_ct_reach) * 100
+    
+  ) %>%
+  arrange(country, desc(price_difference)) 
 
 ```
 
 ```{r}
 
 price_diff_lab <- glue::glue(paste0(round(mean(abs(party_price_differences$price_difference)), 2)))
-perc_max_lab <- paste0(round(max(party_price_differences$percentage_difference_lower)), "%")
-perc_avg_lab <- paste0(round(mean(abs(party_price_differences$percentage_difference_lower))), "%")
+perc_max_lab <- paste0(round(max(party_price_differences$percentage_difference_original)), "%")
+perc_avg_lab <- paste0(round(mean(abs(party_price_differences$percentage_difference_original))), "%")
 reach_diff_lab <- paste0(scales::number(round(mean(abs(party_price_differences$reach_difference)))))
-reach_max_lab <- paste0(scales::number(round(max(abs(party_price_differences$reach_difference))))) 
+reach_max_lab <- paste0(scales::number(ceiling(max(abs(party_price_differences$reach_difference)) / 1000) * 1000))
 
 
 scale_reach_difference <- function(initial_budget, initial_reach_diff, new_budget) {
@@ -577,21 +566,38 @@ new_budget <- 1000
 ```
 
 
-Within the same country, political parties face an average price variation of 4% for identical ads placed at the same time with the same budget, and for some parties this goes up to 11%. This creates an uneven playing field in national political landscapes, where some parties can reach significantly more voters than others with the same budget.
+Within the same country, political parties face an average price variation of `r perc_avg_lab` for identical ads placed at the same time with the same budget, and for some parties this goes up to `r perc_max_lab`. This creates an uneven playing field in national political landscapes, where some parties can reach significantly more voters than others with the same budget. 
 
-These price differences translate to substantial inequalities in potential voter reach. Assuming the prices scale, with a modest budget of €1000, parties reach an additional `r scales::number( scale_reach_difference(initial_budget, initial_reach_diff, new_budget))` voters  for the same price. The most favorably priced party in this study could reach an additional `r scales::number( scale_reach_difference(initial_budget, parse_number(str_remove(reach_max_lab, " ")), new_budget))` voters compared to the least favorably priced party. In a close election, this difference in voter outreach could prove decisive.
+<!-- For example, assuming budgets scale linearly, with a modest budget of €1000 for an ad, ALDE, the most favorably priced party in Flanders, could reach an additional `r scales::number(ceiling(scale_reach_difference(initial_budget, initial_reach_diff, new_budget)))` voters compared to Vooruit, the least favorably priced party in Flanders, for the same budget. -->
 
+
+<br>
+<br>
 
 ```{r}
 shiny::HTML(percentage_section(data.frame(
   Percentage = c( perc_avg_lab, perc_max_lab),
   Title = c("Average Price Disparity Between Parties", 
             "Maximum Price Disparity Between Parties"),
-  Subtitle = c(glue::glue("On average, prices between countries differ by {price_diff_lab} EUR or {perc_avg_lab}. This leads to a difference of {reach_diff_lab} people being reached on average."),
-               glue::glue("Highest price vs. lowest (in Flanders). This leads to a difference of {reach_max_lab} people being reached between the two parties on average.")),
+  Subtitle = c(glue::glue("On average, prices between parties differ by {price_diff_lab} EUR or {perc_avg_lab}. This leads to a difference of {reach_diff_lab} people being reached on average."),
+               glue::glue("Highest price vs. lowest (in Flanders). This leads to a difference of {reach_max_lab} people being reached between the two parties with largest discrepancy (Vooruit vs. ALDE).")),
   stringsAsFactors = FALSE
 )))
 ```
+
+
+
+```{r}
+dashboard_html <- '
+<div style="background-color: #e8f4f8; border-left: 6px solid #6cabdd; padding: 16px; margin-bottom: 20px;">
+  <strong>Explore Further:</strong> Are you interested in seeing how your party’s ad pricing stacks up against others?  Dive deeper into the data with our <a href="https://euroalgos.shinyapps.io/explore/" style="color: #337ab7; text-decoration: underline;">interactive dashboard</a>. 
+  Select your own party and compare ad pricing and reach across different demographics, geographies, and target audiences to better understand the dynamics of the prices you had to pay.
+</div>
+'
+
+shiny::HTML(dashboard_html)
+```
+
 
 
 
@@ -600,14 +606,15 @@ shiny::HTML(percentage_section(data.frame(
 
 **Account-Level Factors:** Political parties with more Facebook page likes paid higher prices for ads, though the correlation between page likes and ad pricing was weak (R = 0.084) and not statistically significant. 
 
-*Political parties that historically spent more on ads in the past had to pay higher costs per thousand users compared to parties that spend less.* Correlations between ad spending and lower prices was moderately high (R values of 0.25 to 0.32). For every 1% increase in a party's historic ad spend (in thousands), the cost to reach 1 000 new people increases by about 0.01 Euro (1 cent). This effect is small for individual campaigns but can accumulate for parties with large advertising budgets over time. However, it should be noted that this price difference is mainly driven by European political parties (which tend to spend less on average compared to national parties).
+*Political parties that historically spent more on ads in the past had to pay higher costs per thousand users compared to parties that spend less.* Correlations between ad spending and lower prices was moderately high (R values of 0.25 to 0.32). For every 1% increase in a party's historic ad spend (in thousands), the cost to reach 1000 new people increases by about 0.01 Euro (1 cent). This effect is small for individual campaigns but can accumulate for parties with large advertising budgets over time. However, it should be noted that this price difference is mainly driven by European political parties (which tend to spend less on average compared to national parties).
+
 
 ```{r}
 # Data for Historic Ad Spend (Key Stats)
 historic_spend_data <- data.frame(
   Percentage = c("€0.01"),
-  Title = c("Cost Increase Per 1% Historic Ad Spend"),
-  Subtitle = c("For every 1% increase in a party's historic ad spend, the cost to reach users increases by €0.01 for 1 000 users in future campaigns. This cumulative effect means larger advertisers may face progressively higher costs over time."),
+  Title = c("Spend more, get charged more"),
+  Subtitle = c("For every 1% increase in a party's historic ad spend, the cost to reach users increases by €0.01 for 1000 users in future campaigns. This cumulative effect means larger advertisers may face progressively higher costs over time."),
   stringsAsFactors = FALSE
 )
 
@@ -639,15 +646,15 @@ gender_dat <- dir("data/reports", recursive = T, full.names = T) %>%
     # print(.x)
     if(str_detect(.x, "N-VA")){
       fin <- read_csv2(.x) %>% 
-      set_names(names(gender_names)) %>% 
-      mutate(path = .x)
+        set_names(names(gender_names)) %>% 
+        mutate(path = .x)
     } else {
       fin <- read_csv(.x) %>% 
-      set_names(names(gender_names)) %>% 
-      mutate(path = .x)
+        set_names(names(gender_names)) %>% 
+        mutate(path = .x)
     }
     return(fin %>% mutate_all(as.character))
-    })  %>% 
+  })  %>% 
   mutate(path = str_remove_all(path, "data/reports/|/overview.csv")) %>% 
   separate(path, into = c("cntry", "party"), sep = "/")   %>% 
   mutate(cost_per_result = fix_weird_numbers(cost_per_result)) %>% 
@@ -702,72 +709,45 @@ gender_dat <- dir("data/reports", recursive = T, full.names = T) %>%
 # Calculate average price and reach for each gender within each country
 country_gender_avg_prices <- gender_dat %>% 
   mutate(reach = as.numeric(reach)) %>% 
+  filter(gender != "unknown") %>%
   group_by(cntry, gender) %>%
   summarize(avg_price = mean(price),
             avg_reach = mean(reach)) %>%
   arrange(cntry)
 
-# Function to calculate price differences by gender (only within the same country)
-calculate_gender_price_differences <- function(prices) {
-  # Iterate over unique countries
-  unique_countries <- unique(prices$cntry)
-  
-  results <- map_dfr(unique_countries, function(country) {
-    # Filter for only the genders in the same country
-    country_data <- prices %>% filter(cntry == country)
+gender_price_differences <- country_gender_avg_prices %>% 
+  group_by(cntry) %>%
+  mutate(avg_fm_price = avg_price[gender == "female"],
+          avg_fm_reach = avg_reach[gender == "female"]) %>%
+  ungroup %>%
+  filter(gender == "male") %>%
+  mutate(
+    price_diff = avg_price - avg_fm_price, 
+    reach_diff = avg_reach - avg_fm_reach
+  ) %>%
+  transmute(
+    country = cntry, gender, 
+    avg_price, avg_fm_price,
     
-    # Get the number of genders in that country
-    n <- nrow(country_data)
+    price_difference = price_diff, 
     
-    if (n > 1) {
-      # Generate all possible combinations of genders within the country
-      gender_combinations <- combn(seq_len(n), 2, simplify = FALSE)
-      
-      # Calculate the price differences for each pair of genders within the country
-      map_dfr(gender_combinations, function(pair) {
-        idx1 <- pair[1]
-        idx2 <- pair[2]
-        
-        gender1 <- country_data$gender[idx1]
-        gender2 <- country_data$gender[idx2]
-        
-        price1 <- country_data$avg_price[idx1]
-        price2 <- country_data$avg_price[idx2]
-        price_diff <- price1 - price2
-        
-        reach1 <- country_data$avg_reach[idx1]
-        reach2 <- country_data$avg_reach[idx2]
-        reach_diff <- reach1 - reach2
-        
-        tibble(
-          country = country,
-          gender1 = gender1,
-          gender2 = gender2,
-          price_difference = price_diff,
-          reach_difference = reach_diff,
-          percentage_difference_original = (price_diff / price2) * 100,
-          percentage_difference_lower = (price_diff / min(price1, price2)) * 100,
-          percentage_difference_higher = (price_diff / max(price1, price2)) * 100,
-          reach_diff_original = (reach_diff / reach2) * 100,
-          reach_diff_lower = (reach_diff / min(reach1, reach2)) * 100,
-          reach_diff_higher = (reach_diff / max(reach1, reach2)) * 100
-        )
-      })
-    }
-  })
-  
-  results %>% arrange(desc(abs(price_difference)))
-}
+    percentage_difference_original = (price_diff / avg_fm_price),
+    
+    reach_difference = reach_diff,
+    reach_diff_original = (reach_diff / avg_fm_reach)
+    
+  ) %>%
+  arrange(country, desc(price_difference)) 
 
-# Calculate and display price differences by gender within the same country
-gender_price_differences <- calculate_gender_price_differences(country_gender_avg_prices) %>% 
-  filter(gender1 != "unknown") %>% 
-  filter(gender2 != "unknown")
+# # Calculate and display price differences by gender within the same country
+# gender_price_differences <- calculate_gender_price_differences(country_gender_avg_prices) %>% 
+#   filter(gender1 != "unknown") %>% 
+#   filter(gender2 != "unknown")
 
 # Calculate summary statistics
 price_diff_lab <- glue::glue(paste0(round(mean(abs(gender_price_differences$price_difference)), 2)))
-perc_max_lab <- paste0(round(max(gender_price_differences$percentage_difference_lower)), "%")
-perc_avg_lab <- paste0(round(mean(abs(gender_price_differences$percentage_difference_lower))), "%")
+perc_max_lab <- paste0(round(max(gender_price_differences$percentage_difference_original)), "%")
+perc_avg_lab <- paste0(round(mean(abs(gender_price_differences$percentage_difference_original))), "%")
 reach_diff_lab <- paste0(scales::number(round(mean(abs(gender_price_differences$reach_difference)))))
 reach_max_lab <- paste0(scales::number(round(max(abs(gender_price_differences$reach_difference)))))
 
@@ -803,17 +783,129 @@ shiny::HTML(percentage_section(demographic_difference_data))
 
 Our findings suggest that Facebook's ad delivery algorithms play a crucial role in shaping the digital political advertising landscape. These algorithms, while designed to optimize ad delivery, may inadvertently be influencing the democratic process in ways we're only beginning to understand.
 
+
+
+# Conclusions
+
+Our study reveals significant disparities in the pricing of political advertisements on Facebook across different countries and parties during the 2024 European Parliament elections. These disparities have implications for democratic processes, as they may influence the reach and effectiveness of political campaigns.
+
+Key findings include:
+
++ Significant price differences exist across countries, with up to a 321% price increase between the highest and lowest average prices.
+
++ Within countries, parties experience price variations that can impact their potential voter reach significantly. 
+
++ Factors such as the historical ad spending show some correlation with ad pricing but are not solely determinative.
+
++ Facebook's ad delivery algorithms, while optimized for efficiency, may inadvertently create inequalities in the political advertising landscape.
+
+
+# Recommendations
+
+- **Transparency**: Social media platforms should provide greater transparency regarding their ad pricing algorithms to ensure a fair playing field for all political parties.
+
+- **Regulation**: Policymakers may consider regulations that address algorithmic biases in political advertising to protect democratic processes.
+
+- **Further Research**: Additional studies should be conducted to explore the impact of factors such as ad content and user engagement metrics on ad pricing.
+
+- **Need for Testing**: Political campaigns can use the template of this experiment to test their own messages and target audiences.
+
+- **Need for Preparations**: The target group has large effects on the price of an ad. Figuring out the characteristics of the target audience and their algorithmic performance is key to receiving better pricing.
+
+- **Ad Delivery Monitoring**: Political parties should consistently monitor ad delivery data and outcomes to understand the patterns in pricing fluctuations and optimize their ad spending.
+
+- **Focus on New Entrants**: Political campaigns, particularly for newer or smaller parties, should be cautious of the "spending tax" effect. Exploring strategies to maximize their limited budgets early on can help mitigate rising costs as their ad spending increases.
+
+- **Engage with Platforms**: Political parties and regulatory bodies should engage with social media platforms to advocate for fairer ad pricing structures, particularly in sensitive political contexts where a level playing field is crucial.
+
+
+<!-- <div style="page-break-before: always;"></div> -->
+<!-- <div style="text-align: center;"> -->
+<!--   <h2 style="color: #000000; font-size: 24pt; margin-top: 20px;">Part 2: Detailed Report</h2> -->
+<!--   <img src="report_cover.png" style="max-width: 100%; max-height: 80vh;" alt="Report Cover"> -->
+<!-- </div> -->
+<!-- <div style="page-break-after: always;"></div> -->
+
+<div style="page-break-before: always;"></div>
+<div style="position: relative; width: 100%; height: 100%;">
+  <img src="report_cover.png" style="width: 100%; height: 100%; object-fit: cover;" alt="Report Cover">
+  <div style="position: absolute; top: 20%; left: 50%; transform: translate(-50%, -50%); text-align: center; background-color: rgba(0, 0, 0, 0.5); padding: 10px 200px; white-space: nowrap; color: #ffffff; font-size: 24pt; font-family: Inter, sans-serif; font-weight: 300;">
+  Part 2: Detailed Report
+  </div>
+</div>
+
+<div style="page-break-after: always;"></div>
+
+<!-- <div class="page-break"></div> -->
+<!-- <div class="report-part2-cover"> -->
+<!--   <style> -->
+<!--     .page-break { -->
+<!--       page-break-before: always !important; -->
+<!--     } -->
+<!--     .report-part2-cover { -->
+<!--       position: absolute !important; -->
+<!--       top: 0 !important; -->
+<!--       left: 0 !important; -->
+<!--       right: 0 !important; -->
+<!--       bottom: 0 !important; -->
+<!--       width: 100% !important; -->
+<!--       height: 100% !important; -->
+<!--       background-image: url('report_cover.png') !important; -->
+<!--       background-size: cover !important; -->
+<!--       background-position: center center !important; -->
+<!--       background-repeat: no-repeat !important; -->
+<!--       display: flex !important; -->
+<!--       justify-content: center !important; -->
+<!--       align-items: center !important; -->
+<!--       page-break-after: always !important; -->
+<!--     } -->
+<!--     .report-part2-cover::before { -->
+<!--       content: "" !important; -->
+<!--       position: absolute !important; -->
+<!--       top: 0 !important; -->
+<!--       left: 0 !important; -->
+<!--       right: 0 !important; -->
+<!--       bottom: 0 !important; -->
+<!--       background-color: rgba(0, 0, 0, 0.5) !important; -->
+<!--     } -->
+<!--     .cover-title { -->
+<!--       position: relative !important; -->
+<!--       color: #ffffff !important; -->
+<!--       font-size: 36pt !important; -->
+<!--       text-align: center !important; -->
+<!--       z-index: 10 !important; -->
+<!--       text-shadow: 2px 2px 4px rgba(0,0,0,0.5) !important; -->
+<!--       padding: 20px !important; -->
+<!--       max-width: 80% !important; -->
+<!--     } -->
+<!--   </style> -->
+<!--   <h2 class="cover-title">Part 2: Detailed Report</h2> -->
+<!-- </div> -->
+<!-- <div class="page-break"></div> -->
+
+<!-- <div style="page-break-before: always;"></div> -->
+<!-- <center> -->
+<!-- <h2 style="color: #6cabdd;">Part 2: Detailed Report</h1> -->
+
+<!-- <img src="report_cover.png" width="100%" alt="Detailed Report Cover"> -->
+
+<!-- </center> -->
+
+<!-- <div style="page-break-after: always;"></div> -->
+
+
+
 # Introduction
 
 Political advertising on social media platforms like Facebook has become a crucial tool for political parties to reach voters during election campaigns. Political parties and other advertisers may assume that the price of ads is relatively consistent across countries, audiences, and accounts, [but in reality, that is not the case](https://books.ipskampprinting.nl/thesis/635091-Votta/88/). Facebook uses an [auction-based system](https://www.facebook.com/business/help/430291176997542?id=561906377587030) where advertisers bid for the attention of users, and these bids are influenced by many factors, including local market conditions, user demand, and competition, but also many unknown and potential factors that we explore here. In this study, we aim to uncover why political parties across different countries are charged different prices for the same ads and what factors play a role in these pricing decisions.
 
-By partnering with political parties throughout Europe, we have a unique opportunity to examine how algorithms tangibly affected the 2024 European elections. Our goal is to shed light on the variations in ad pricing and provide insights into Facebook's advertising cost structure. We investigate how different elements - including a party's past advertising expenditure, level of political backing, and even the gender of the reached audience - might influence ad prices. Our findings reveal an intriguing pattern: parties that have historically spent more on advertising often encounter escalating costs as time goes on. This creates what we might call a "spending tax," potentially putting political groups that invest heavily in certain markets at a disadvantage.
+By partnering with political parties throughout Europe, we have a unique opportunity to examine how algorithms tangibly affected the 2024 European elections. Our goal is to shed light on the variations in ad pricing and provide insights into Facebook's advertising cost structure. We investigate how different elements - including a party's past advertising expenditure, level of political backing, and even the gender of the reached audience - might influence ad prices. Our findings suggest an intriguing pattern: parties that have historically spent more on advertising may encounter rising costs over time. This could create what we might call a 'spending tax,' potentially putting political groups that invest heavily in certain markets at a disadvantage. Alternatively, we also observe that parties entering the market might face lower initial costs, possibly designed to encourage new advertisers—akin to a 'first months free' model often seen in subscription services. However, further investigation would be needed to confirm these trends.
 
 We also explore how these pricing dynamics vary not just between countries but within them, comparing costs for different political parties and demographic groups. This analysis reveals significant disparities that could have far-reaching implications for political discourse and campaign strategies across Europe. By understanding these pricing mechanisms, we can gain valuable insights into the evolving landscape of digital political advertising and its potential impact on democratic processes in the age of social media.
 
 
 
-# Overview
+# Overview of Cases
 
 
 
@@ -853,12 +945,23 @@ overview %>%
     columns = vars(Region),
     colors = country_colors
   ) %>%
+  # Highlight European Parties
+  tab_style(
+    style = list(
+      cell_fill(color = "#a6dced")
+    ),
+    locations = cells_body(
+    columns = -Region, # Exclude the "Region" column from coloring
+      rows = Party %in% c("ALDE", "EGP", "ECPM")
+    )
+  ) %>%
   # Highlight DIELINKE and CDU in grey
   tab_style(
     style = list(
-      cell_fill(color = "grey")
+      cell_fill(color = "lightgrey")
     ),
     locations = cells_body(
+    columns = -Region, # Exclude the "Region" column from coloring
       rows = Party %in% c("LINKE", "CDU", "Les Engagés", "Liberalerna", "DIEGRÜNEN")
     )
   ) %>%
@@ -896,7 +999,7 @@ overview %>%
   tab_header(
     title = md("**Table 1: Overview of Participating Parties**")
   )  %>% 
-  gt::tab_footnote("Note: Parties that deviate from settings are shown in grey (red highlights the deviation). Those parties cannot be directly compared as they ran ads at different times / spend different budgets.")
+  gt::tab_footnote("Note: European Parties (ALDE, EGP, ECPM) placed ads in multiple countries and are highlighted in blue. Parties that deviate from settings are shown in grey (red highlights the deviation). Those parties cannot be directly compared as they ran ads at different times / spend different budgets.")
 
 ```
 
@@ -926,12 +1029,23 @@ overview %>%
     columns = vars(Region),
     colors = country_colors
   ) %>%
+  # Highlight European Parties
+  tab_style(
+    style = list(
+      cell_fill(color = "#a6dced")
+    ),
+    locations = cells_body(
+    columns = -Region, # Exclude the "Region" column from coloring
+      rows = Party %in% c("ALDE", "EGP", "ECPM")
+    )
+  ) %>%
   # Highlight DIELINKE and CDU in grey
   tab_style(
     style = list(
-      cell_fill(color = "grey")
+      cell_fill(color = "lightgrey")
     ),
     locations = cells_body(
+    columns = -Region, # Exclude the "Region" column from coloring
       rows = Party %in% c("LINKE", "CDU", "Les Engagés", "Liberalerna", "DIEGRÜNEN")
     )
   ) %>%
@@ -969,10 +1083,10 @@ overview %>%
   tab_header(
     title = md("**Table 1: Overview of Participating Parties (Continued)**")
   ) %>% 
-  tab_footnote("Note: Parties that deviate from settings are shown in grey (red highlights the deviation). Those parties cannot be directly compared as they ran ads at different times / spend different budgets.")
+  gt::tab_footnote("Note: European Parties (ALDE, EGP, ECPM) placed ads in multiple countries and are highlighted in blue. Parties that deviate from settings are shown in grey (red highlights the deviation). Those parties cannot be directly compared as they ran ads at different times / spend different budgets.")
 
 
-  # DT::datatable(overview_tab)
+# DT::datatable(overview_tab)
 ```
 
 
@@ -1012,6 +1126,59 @@ Market Context Factors: The overall advertising environment also plays a role. I
 
 - **RQ2c**: Do market context factors influence the price for political advertisements?
 
+## (Short) Methodology
+
+We conducted an **algorithm audit study** with political parties across Europe, running identical, non-partisan ads on Facebook to encourage voting. Our sample included national parties in parliamentary seats, parties in the European Parliament, and European political groups, securing participation from `r length(unique(overview$party))` parties in `r length(unique(overview$cntry))` countries/regions. Each party ran the same ad text, images, and budgets to isolate the effects of factors like country and audience targeting on pricing. Ads were tested using three target audiences:
+
+1. **Interest in Politics**
+2. **Below-University Education**
+3. **No Targeting**
+
+We measured cost for thousand users to analyze price variations.
+
+- **Daily Budget**: €1 per ad
+- **Campaign Duration**: 7 days
+- **Number of Ads**: 5 ad copies per target audience, across 3 audiences
+- **Total Investment**: €105 per national actor, 5x for European actors
+
+For a more detailed methodology, please see the final section at the end of this report.
+
+```{r, fig.cap = "Political ads displayed in different languages across various European countries as part of the algorithm audit study. The ads encouraged voting and were tested for pricing differences based on targeting conditions such as political interest and education level.", fig.align='center'}
+
+# Load necessary libraries
+library(gridExtra)
+library(png)
+library(grid)
+
+# Load the PNG images
+img1 <- readPNG("oldall/ads/ie_ad.png")
+img2 <- readPNG("oldall/ads/de_ad.png")
+
+img3 <- readPNG("oldall/ads/hu_ad.png")
+img4 <- readPNG("oldall/ads/sv_ad.png")
+
+img5 <- readPNG("oldall/ads/da_ad.png")
+img6 <- readPNG("oldall/ads/nl_ad.png")
+
+img7 <- readPNG("oldall/ads/be-nl_ad.png")
+img8 <- readPNG("oldall/ads/be-fr_ad.png")
+
+
+# Convert the PNG images to raster objects
+raster_img1 <- rasterGrob(img1, interpolate = TRUE)
+raster_img2 <- rasterGrob(img2, interpolate = TRUE)
+raster_img3 <- rasterGrob(img3, interpolate = TRUE)
+raster_img4 <- rasterGrob(img4, interpolate = TRUE)
+raster_img5 <- rasterGrob(img5, interpolate = TRUE)
+raster_img6 <- rasterGrob(img6, interpolate = TRUE)
+raster_img7 <- rasterGrob(img7, interpolate = TRUE)
+raster_img8 <- rasterGrob(img8, interpolate = TRUE)
+
+# Arrange the images in a 2x2 grid
+grid.arrange(raster_img1, raster_img2, raster_img3, raster_img4, 
+             raster_img5, raster_img6, raster_img7, raster_img8, ncol=3)
+
+```
 
 
 
@@ -1028,21 +1195,19 @@ We begin by examining descriptive statistics that relate to our primary research
 
 ### Country Differences
 
-In this section we explore differences in prices between countries and audiences. Using data obtained by the political parties, we can show that political parties in different countries running ads at the same time have considerably different costs for reaching the same amount of people.  Figure 1 illustrates the variation in the cost of reaching 1 000 users with political ads on Facebook across different European countries during the 2024 European Parliament elections.
+In this section we explore differences in prices between countries and audiences. Using data obtained by the political parties, we can show that political parties in different countries running ads at the same time have considerably different costs for reaching the same amount of people.  Figure 2 illustrates the variation in the cost of reaching 1000 users with political ads on Facebook across different European countries during the 2024 European Parliament elections.
 
 
-```{r, fig.width=8, fig.height=6, dpi=300, fig.cap="The graph illustrates the variation in the cost of reaching 1 000 users with political ads on Facebook across different European countries during the 2024 European Parliament elections. The mean and standard deviation for each country are indicated above the respective points. Denmark exhibits the highest average price per 1 000 users (1.53 EUR), while Hungary has the lowest average price (0.36 EUR) -  an increase of 321.08%. On average, prices differ by 0.43 EUR or 76% between countries."}
+```{r, fig.width=8, fig.height=6, dpi=300, fig.cap="The graph illustrates the variation in the cost of reaching 1000 users with political ads on Facebook across different European countries during the 2024 European Parliament elections. The mean and standard deviation for each country are indicated above the respective points. Denmark exhibits the highest average price per 1000 users (1.53 EUR), while Hungary has the lowest average price (0.36 EUR) -  an increase of 321.08%. On average, prices differ by 0.43 EUR or 76% between countries."}
 
 library(EnvStats)
 
 ov %>%
-  group_by(cntry, party) %>%
-  summarize(price = mean(price)) %>%
-  ungroup() %>%
-  mutate(cntry = fct_reorder(cntry, price)) %>%
   group_by(cntry) %>%
-  mutate(mean_price = mean(price),
-         sd_price = sd(price)) %>%  # Calculate the standard deviation for error bars
+  summarize(mean_price = mean(price), 
+            sd_price = sd(price, na.rm = T)) %>%
+  ungroup() %>%
+  mutate(cntry = fct_reorder(cntry, mean_price, .fun = mean)) %>%
   ggplot(aes(cntry, price, color = cntry)) +
   geom_hline(yintercept = mean(ov$price, na.rm = TRUE), 
              linetype = "dashed", color = "black") +  # Add overall mean line
@@ -1060,13 +1225,13 @@ ov %>%
   # Add standard deviation below the point with always two digits
   geom_text(aes(y = mean_price, label = paste0("SD: ", sprintf("%.2f", sd_price))), 
             vjust = 2, size = 3, color = "black") +  # Show SD below the dot
-  ylim(0.3, 1.6) +  # Adjust y limits
+  ylim(0.3, 1.7) +  # Adjust y limits
   theme_minimal(base_size = 14) +
   labs(
     y = "Prices per 1k Users in Euro (per ad)",
     subtitle = "Takeaway: Prices differ between countries to a large degree",
     x = "",
-    title = "Figure 1: Price Differences by Country"
+    title = "Figure 2: Price Differences by Country"
   ) +
   coord_flip() +  # Flip coordinates for better readability
   ggthemes::scale_color_gdocs() +  # Use minimal theme
@@ -1080,21 +1245,19 @@ ov %>%
 ```
 
 
-To complement our understanding of pricing differences, we also examined variations in ad reach across countries. Figure 2 illustrates these differences.
+To complement our understanding of pricing differences, we also examined variations in ad reach across countries. Figure 3 illustrates these differences.
 
 
 ```{r, fig.width=8, fig.height=6, dpi=300, fig.cap="The graph illustrates the variation in the reach of political ads on Facebook, measured by the number of unique users reached per ad across different European countries during the 2024 European Parliament elections. The mean and standard deviation for each country are indicated above and below the respective points. Hungarian political parties exhibit the highest average reach per ad (19,320 unique users), while Danish parties have the lowest average reach for the same price (4,472 unique users)."}
 
 
 ov %>%
-  group_by(cntry, party) %>%
-  summarize(reach = mean(reach)) %>%
-  ungroup() %>%
-  mutate(cntry = fct_reorder(cntry, reach)) %>%
   group_by(cntry) %>%
-  mutate(mean_reach = mean(reach),
-         sd_reach = sd(reach)) %>%  # Calculate the standard deviation for error bars
-  ggplot(aes(cntry, reach, color = cntry)) +
+  summarize(mean_reach = mean(reach), 
+            sd_reach = sd(reach, na.rm = T)) %>%
+  ungroup() %>%
+  mutate(cntry = fct_reorder(cntry, mean_reach, .fun = mean)) %>%
+  ggplot(aes(cntry, mean_reach, color = cntry)) +
   geom_hline(yintercept = mean(ov$reach, na.rm = TRUE), 
              linetype = "dashed", color = "black") +  # Add overall mean line
   # Add text label for "Overall Mean" along with its value
@@ -1117,7 +1280,7 @@ ov %>%
     y = "Reached Unique Users (per ad)",
     subtitle = "Takeaway: Reached people differs between countries to a large degree",
     x = "",
-    title = "Figure 2: Reach Differences by Country"
+    title = "Figure 3: Reach Differences by Country"
   ) +
   coord_flip() +  # Flip coordinates for better readability
   ggthemes::scale_color_gdocs() +  # Use minimal theme
@@ -1134,7 +1297,7 @@ ov %>%
 
 
 
-```{r, fig.width=10, fig.height=12, dpi=300, fig.cap="The graph illustrates the variation in the cost of reaching 1 000 users with political ads on Facebook across different European countries during the 2024 European Parliament elections. The price differences are shown for targeted audiences (below-university education level, people interested in politics) compared to the 'No Targeting' baseline. Audiences vary significantly in ad pricing. For example, Sweden shows a 11.8% increase for targeting people interested in politics and a 29.7% higher cost for targeting people with below-university level education."}
+```{r, fig.width=10, fig.height=12, dpi=300, fig.cap="The graph illustrates the variation in the cost of reaching 1000 users with political ads on Facebook across different European countries during the 2024 European Parliament elections. The price differences are shown for targeted audiences (below-university education level, people interested in politics) compared to the 'No Targeting' baseline. Audiences vary significantly in ad pricing. For example, Sweden shows a 11.8% increase for targeting people interested in politics and a 29.7% higher cost for targeting people with below-university level education."}
 
 
 ov %>%
@@ -1144,9 +1307,7 @@ ov %>%
   ungroup() %>%
   group_by(cntry) %>%
   mutate(baseline_price = mean_price[audience == "No Targeting ad"]) %>%  
-  mutate(perc_deviation = ifelse(audience != "No Targeting ad", 
-                                 100 * (mean_price - baseline_price) / baseline_price, 
-                                 0)) %>%
+  mutate(perc_deviation = 100 * (mean_price - baseline_price) / baseline_price) %>%
   ungroup() %>%
   mutate(
     Legend = case_when(
@@ -1163,7 +1324,7 @@ ov %>%
     T ~ "No Targeting"
   )) %>%
   mutate(audience = fct_relevel(audience, c("Below-University\nLevel Education", "People Interested\nin Politics", "No Targeting") %>% rev)) %>%
-
+  
   ggplot(aes(x = audience, y = perc_deviation, color = Legend)) +
   geom_segment(aes(x = audience, xend = audience, y = 0, yend = perc_deviation), size = 1) +  # Lollipop sticks
   geom_point(size = 3, aes(shape = Legend)) +  # Lollipop heads
@@ -1179,9 +1340,9 @@ ov %>%
   labs(
     x = "",    
     subtitle = "Takeaway: It is more costly to use targeting options as opposed to use no targeting",
-
+    
     y = "\n⟵ Less Costly Than No Targeting | More Costly Than No Targeting ⟶",
-    title = "Figure 3: Price Differences by Audience Compared to 'No Targeting'"
+    title = "Figure 4: Price Differences by Audience Compared to 'No Targeting'"
   )
 
 
@@ -1218,7 +1379,7 @@ right_plot_data <- overview  %>%
   summarize(price = mean(price)) %>%
   ungroup() %>%
   
-
+  
   
   # Step 2: Calculate country average excluding 'parties_had_to_excluded'
   group_by(cntry) %>%
@@ -1228,7 +1389,7 @@ right_plot_data <- overview  %>%
   # Step 3: Calculate price difference from the country average
   mutate(price = (price / price_cntry_avg - 1) * 100) %>%  # Price difference from country average in percentage
   ungroup() %>%
-    # Step 5: Mutate for color and shapes
+  # Step 5: Mutate for color and shapes
   mutate(
     Legend = case_when(
       party %in% parties_had_to_excluded ~ "Setting Differs (Timing/Spending)",
@@ -1289,7 +1450,7 @@ left_plot <- ggplot(right_plot_data %>%
                       filter(!(
                         cntry %in% c("Belgium-FR", "Belgium-NL", "Denmark", "Germany", "Sweden")
                       )),
-  aes(x = reorder_within(party, price, cntry), y = price, color = Legend, shape = Legend)
+                    aes(x = reorder_within(party, price, cntry), y = price, color = Legend, shape = Legend)
 ) +
   geom_segment(aes(xend = reorder_within(party, price, cntry), y = 0, yend = price), size = 1, show.legend = F) +
   geom_point(size = 2.15, show.legend = F) +
@@ -1316,7 +1477,7 @@ left_plot <- ggplot(right_plot_data %>%
 # Combine both plots with patchwork and leave the 10th panel empty for the legend
 (right_plot | left_plot) + 
   plot_layout(ncol = 2, heights = c(1, 0.5), guides = "collect", axis_titles = "collect") + 
-  plot_annotation(title = "\t\tFigure 4: Variations in Ad Prices Across Parties",
+  plot_annotation(title = "\t\tFigure 5: Variations in Ad Prices Across Parties",
                   subtitle = "\t\t\t\tTakeaway: Some parties pay higher prices than others for the same reach") &
   theme(plot.title = element_text(size = 21)) & 
   theme(legend.position = "bottom") & 
@@ -1328,7 +1489,7 @@ left_plot <- ggplot(right_plot_data %>%
 ```
 
 
-<!-- In Figure 4, to ensure that our comparison is accurate, we exclude parties that used significantly different advertising settings, such as launching their campaigns later (e.g. LINKE, CDU), or spending substantially less in total (Lés Engagés). We have flagged these parties with grey triangles for transparency, but they do not influence the country-level average presented in the graph. -->
+<!-- In Figure 9, to ensure that our comparison is accurate, we exclude parties that used significantly different advertising settings, such as launching their campaigns later (e.g. LINKE, CDU), or spending substantially less in total (Lés Engagés). We have flagged these parties with grey triangles for transparency, but they do not influence the country-level average presented in the graph. -->
 
 
 <!-- On average, the price disparity between parties *within* countries amounts to 3.47%, which corresponds to an average price difference of 0.04 EUR per 1k reached users. Given the prices we have set, this price difference results in reaching approximately 381 people on average. The maximum observed price disparity between parties is 26.98%, occurring in Flanders, where the highest prices (paid by Vooruit) and lowest ad prices (ALDE) differ substantially by 0.19 EUR per 1k reached users. Given the prices we have set, this difference allows ALDE to reach on average 2,096 more people compared to Vooruit. -->
@@ -1346,12 +1507,12 @@ Next, we explore account-level, party-level, and market-level factors.
 ```{r, fig.width=8, fig.height=6, dpi=300,  fig.cap="This scatter plot illustrates the relationship between the number of Facebook page likes and the standardized ad prices for various political parties across European countries during the 2024 European Parliament elections. The x-axis (logarithmic scale) represents the number of page likes, while the y-axis shows the standardized price of ads relative to each country's mean. Each point represents a political party, labeled with its name and country. The blue line indicates the linear regression trend. There is a weak positive correlation (R = 0.084, p = 0.6) between page likes and standardized ad prices, suggesting that parties with more followers tend to pay slightly higher prices relative to their country's average, though this relationship is not statistically significant."}
 
 overview %>%
-  group_by(party, iso2c) %>%
-  summarize(page_likes = mean(page_likes, na.rm = T),
-            price = mean(price)) %>%
+  group_by(party, iso2c, page_likes) %>%
+  summarize(price = mean(price)) %>%
   ungroup() %>%
   group_by(iso2c) %>% 
-  mutate(price = scale(price)) %>% 
+  mutate(price = (price - mean(price))/mean(price)) %>% 
+  # mutate(price = scale(price)) %>%
   ungroup() %>% 
   mutate(party = paste0(party, " (",iso2c, ")")) %>% 
   ggplot(aes(page_likes, price)) +
@@ -1364,9 +1525,9 @@ overview %>%
   theme_minimal(base_size = 14) +
   labs(x = "Number of Facebook Page Likes (Log Scale)",   
        subtitle = "Takeaway: Page likes don't really influence pricing",
-
+       
        y = "Standardized Ad Price (Deviations from Country Mean)",
-       title = "Figure 5: Facebook Page Popularity on Political Ad Pricing")  
+       title = "Figure 6: Facebook Page Popularity on Political Ad Pricing")  
 ```
 
 
@@ -1395,30 +1556,32 @@ plot_function <- function(var, title) {
     summarize_at(vars(price, !!sym(var)), list(~mean(., na.rm = TRUE))) %>%
     ungroup() %>%
     group_by(iso2c) %>% 
-    mutate(price = scale(price)) %>%
+    mutate(price = (price - mean(price))/mean(price)) %>% 
+    # mutate(price = scale(price)) %>%
     ungroup() %>%
     mutate(party = paste0(party, " (",iso2c, ")")) %>% 
-    mutate(spend := ifelse(!!sym(var) == 0, !!sym(var) + 1, !!sym(var))) %>% 
+    mutate(spend := !!sym(var)) %>%
+    # mutate(spend := ifelse(!!sym(var) == 0, !!sym(var) + .0001, !!sym(var))) %>% 
     mutate(the_facet = title)%>% 
     mutate(the_var = var)
 }
 
 map2_dfr(variables, titles, plot_function) %>%
-    ggplot(aes_string(x = "spend", y = "price")) +
-    geom_point(aes_string(color = "european", shape = "european")) +
-    scale_x_log10(labels = scales::number) +
-    geom_smooth(method = "lm", se = FALSE) +
-    ggpubr::stat_cor(label.y.npc = "top") +
-    ggrepel::geom_text_repel(aes(label = party), max.overlaps = 1) +
-    theme_minimal(base_size = 14) +
-    labs(x = "Ad Spend (Log Scale)", 
+  ggplot(aes_string(x = "spend", y = "price")) +
+  geom_point(aes_string(color = "european", shape = "european")) +
+  scale_x_continuous(labels = scales::number, transform = "log10") +
+  geom_smooth(method = "lm", se = FALSE) +
+  ggpubr::stat_cor(label.y.npc = "top") +
+  ggrepel::geom_text_repel(aes(label = party), max.overlaps = 1) +
+  theme_minimal(base_size = 14) +
+  labs(x = "Ad Spend (Log Scale)", 
        subtitle = "Takeaway: Pages with more historic ad spend have higher prices",
-         y = "Standardized Ad Price (Deviations from Country Mean)", 
-       title = "Figure 6: Comparison of Political Ad Spending over Different Time Periods") +
+       y = "Standardized Ad Price (Deviations from Country Mean)", 
+       title = "Figure 7: Comparison of Political Ad Spending over Different Time Periods") +
   facet_wrap(~the_facet) +
-    ggthemes::scale_color_colorblind() +
-    scale_shape_manual(values = c(16, 17)) +
-    theme(legend.position = "bottom", strip.background = element_rect(fil = "lightgrey", color = NA)) 
+  ggthemes::scale_color_colorblind() +
+  scale_shape_manual(values = c(16, 17)) +
+  theme(legend.position = "bottom", strip.background = element_rect(fil = "lightgrey", color = NA)) 
 ```
 
 
@@ -1429,16 +1592,16 @@ map2_dfr(variables, titles, plot_function) %>%
 fit2 <- lmer(price ~ (1|audience) + (1|cntry), data = ov)
 
 fit4 <- lmer(price ~ (1|audience) + (1|cntry) + log(page_likes/ 1000), data = ov)
-fit5 <- lmer(price ~ (1|audience) + (1|cntry) + log(page_likes/ 1000) + last7days_spend2, 
+fit5 <- lmer(price ~ (1|audience) + (1|cntry) + log(page_likes/ 1000) + log(last7days_spend, base = 10), 
+             data = ov %>% filter(last7days_spend != 0))
+fit6 <- lmer(price ~ (1|audience) + (1|cntry) + log(page_likes/ 1000) + log(last30days_spend, base = 10), 
+             data = ov %>% filter(last30days_spend != 0))
+fit7 <- lmer(price ~ (1|audience) + (1|cntry) + log(page_likes/ 1000) + log(last90days_spend, base = 10), 
+             data = ov %>% filter(last90days_spend != 0))
+fit8 <- lmer(price ~ (1|audience) + (1|cntry) + log(page_likes/ 1000) + log(last7days_spend + 1) + log(historic_spend - last7days_spend + 1), 
              data = ov)
-fit6 <- lmer(price ~ (1|audience) + (1|cntry) + log(page_likes/ 1000) + last30days_spend2, 
-             data = ov)
-fit7 <- lmer(price ~ (1|audience) + (1|cntry) + log(page_likes/ 1000) + last90days_spend2, 
-             data = ov)
-fit8 <- lmer(price ~ (1|audience) + (1|cntry) + log(page_likes/ 1000) + historic_spend2, 
-             data = ov)
-fit9 <- lmer(price ~ (1|audience) + (1|cntry) + log(page_likes/ 1000) + historic_spend2 + engagement , 
-             data = ov)
+fit9 <- lmer(price ~ (1|audience) + (1|cntry) + log(page_likes/ 1000) + log(historic_spend, base = 10) + engagement , 
+             data = ov %>% filter(historic_spend != 0))
 # Display results
 # huxtable::huxreg(fit4, fit5, fit6, fit7, fit8)
 texreg::screenreg(list(fit2, fit4, fit5, fit6, fit7, fit8))
@@ -1447,6 +1610,9 @@ texreg::screenreg(list(fit2, fit4, fit5, fit6, fit7, fit8))
 # anova(fit2, fit4, fit5)
 
 # exp(0.01*1000)
+
+
+
 ```
 
 
@@ -1557,10 +1723,10 @@ unmatched_ov_parties <- ov %>%
 
 cleaned_ress <- readRDS("data/elex_results.rds")
 
- overview %>% 
-   group_by(iso2c, cntry, party) %>% 
-   summarise(price = mean(price)) %>% 
-   ungroup() %>% 
+overview %>% 
+  group_by(iso2c, cntry, party) %>% 
+  summarise(price = mean(price)) %>% 
+  ungroup() %>% 
   # distinct(party, iso2c, .keep_all = TRUE) %>% 
   # select(party, iso2c, reach) %>% 
   left_join(cleaned_ress %>% 
@@ -1590,22 +1756,22 @@ cleaned_ress <- readRDS("data/elex_results.rds")
     party == "Volt" & iso2c == "AT" ~ 0,
     T ~ votes_percent
   )) %>% 
-   
-    mutate(party = paste0(party, " (",iso2c, ")")) %>% 
+  
+  mutate(party = paste0(party, " (",iso2c, ")")) %>% 
   ggplot(aes(votes_percent, price)) +
   geom_point() +
   geom_smooth(method  = "lm", se  = F) +
   ggrepel::geom_text_repel(aes(label = party), max.overlaps = 1) +
-    scale_x_continuous(labels = scales::label_percent(scale = 1)) +  # Add percentage labels
+  scale_x_continuous(labels = scales::label_percent(scale = 1)) +  # Add percentage labels
   ggpubr::stat_cor(label.x.npc = "center") +
-   theme_minimal()  +
+  theme_minimal()  +
   theme_minimal(base_size = 14) +
   labs(x = "\nNational Election Results in EP2024",       
        subtitle = "Takeaway: Electoral support does not influence ad pricing",
-
+       
        y = "Standardized Ad Price (Deviations from Country Mean)\n",
-       title = "Figure 7: Relationship Between Election Results and Ad Prices")
-  
+       title = "Figure 8: Relationship Between Election Results and Ad Prices")
+
 # cleaned_ress %>% select(party_id, votes_percent) %>% filter(party_id %in% c("DE14", "DE03", "DK06"))
 ```
 
@@ -1632,8 +1798,8 @@ ov %>%
   theme_minimal(base_size = 14) +
   labs(x = "\nTotal amount spent on political ads during study (in EUR)", 
        subtitle = "Takeaway: Total expenditure does not influence prices",
-       title  = "Figure 8: Total Expenditure During Ad Experiment",
-       y = "Price (standardized)\n") +
+       title  = "Figure 9: Total Expenditure During Ad Experiment",
+       y = "Price\n") +
   theme(legend.position = "none") +
   ggthemes::scale_color_gdocs() +
   scale_x_continuous(labels = scales::number)
@@ -1653,21 +1819,21 @@ age_gender_names <- read_csv("data/age_gender.csv") %>%
 age_gender_dat <- dir("data/reports", recursive = T, full.names = T) %>% 
   keep(~str_detect(.x, "\\bage_gender.csv\\b")) %>%
   discard(~str_detect(.x, "data/reports/age_gender.csv")) %>% 
-    # .[7] %>% 
+  # .[7] %>% 
   # discard(~str_detect(.x, "CDU|N")) %>% 
   map_dfr(~{
     # print(.x)
     if(str_detect(.x, "N-VA|SPÖ")){
       fin <- read_csv2(.x) %>% 
-      set_names(names(age_gender_names)) %>% 
-      mutate(path = .x)
+        set_names(names(age_gender_names)) %>% 
+        mutate(path = .x)
     } else {
       fin <- read_csv(.x) %>% 
-      set_names(names(age_gender_names)) %>% 
-      mutate(path = .x)
+        set_names(names(age_gender_names)) %>% 
+        mutate(path = .x)
     }
     return(fin %>% mutate_all(as.character))
-    })  %>% 
+  })  %>% 
   mutate(path = str_remove_all(path, "data/reports/|/age_gender.csv")) %>% 
   separate(path, into = c("cntry", "party"), sep = "/")   %>% 
   mutate(cost_per_result = fix_weird_numbers(cost_per_result)) %>% 
@@ -1712,7 +1878,7 @@ age_gender_dat <- dir("data/reports", recursive = T, full.names = T) %>%
 
 eu_audiences <- readRDS("data/eu_audiences.rds")
 # shiny::HTML(percentage_section(population_data))
- 
+
 tomerg_eu <- eu_audiences %>% 
   filter(region == "all" | region %in% c("Wallonische Region", "Flämische Region")) %>%
   filter(!(cntry == "BE" & region == "all")) %>% 
@@ -1757,8 +1923,8 @@ age_gender_dat %>%
   ggpubr::stat_cor() +
   labs(x = "Estimated Active Users in the Target Group (Log Scale)",
        subtitle = "Takeaway: Higher number of active users drives price down",
-     y = "Ad Prices Compared to National Average (Standardized)",
-     title = "Figure 9: Active User Base by Age, Gender, and Target Audience")
+       y = "Ad Prices Compared to National Average (Standardized)",
+       title = "Figure 10: Active User Base by Age, Gender, and Target Audience")
 
 ```
 ```{r, fig.width=8, fig.height=6, dpi=300,  fig.cap="This figure shows the relationship between the estimated number of active users in a target audience (in the 30 days before the ad campaign) and the ad prices paid by political parties. The x-axis (on a logarithmic scale) represents the estimated size of the target audience. The y-axis shows the standardized ad prices compared to the national average. Each point represents a specific ad campaign for a political party, and the blue line indicates the overall trend. A strong negative correlation (R = -0.63, p < 0.001) suggests that as the size of the target audience increases, the ad prices tend to decrease significantly."}
@@ -1805,8 +1971,8 @@ overview %>%
   ggpubr::stat_cor() +
   labs(x = "Estimated Active Users in Target Audience (Log Scale)",
        subtitle = "Takeaway: Higher number of active users drives price down",
-     y = "Ad Prices Compared to National Average (Standardized)",
-     title = "Figure 10: Active User Base Before Ad Campaign by Target Audience")
+       y = "Ad Prices Compared to National Average (Standardized)",
+       title = "Figure 11: Active User Base Before Ad Campaign by Target Audience")
 
 ```
 
@@ -1832,15 +1998,15 @@ age_dat <- dir("data/reports", recursive = T, full.names = T) %>%
     # print(.x)
     if(str_detect(.x, "N-VA")){
       fin <- read_csv2(.x) %>% 
-      set_names(names(age_names)) %>% 
-      mutate(path = .x)
+        set_names(names(age_names)) %>% 
+        mutate(path = .x)
     } else {
       fin <- read_csv(.x) %>% 
-      set_names(names(age_names)) %>% 
-      mutate(path = .x)
+        set_names(names(age_names)) %>% 
+        mutate(path = .x)
     }
     return(fin %>% mutate_all(as.character))
-    })  %>% 
+  })  %>% 
   mutate(path = str_remove_all(path, "data/reports/|/overview.csv")) %>% 
   separate(path, into = c("cntry", "party"), sep = "/")   %>% 
   mutate(cost_per_result = fix_weird_numbers(cost_per_result)) %>% 
@@ -1932,11 +2098,11 @@ age_dat %>%
   scale_x_reordered() +
   scale_y_continuous(labels = scales::label_percent(scale = 1)) +  # Add percentage labels
   labs(
-    x = "",       subtitle = "Takeaway: Younger audiences tend to be cheaper but not always",
-
+    x = "",       subtitle = "Takeaway: Younger audiences tend to be more expensive but not always",
+    
     y = "\n⟵ Price Higher to Reach Older Audiences | Price Higher to Reach Younger Audiences ⟶",
-    title = "Figure 11: Age-Based Price Differences by Party (in %)"
-)
+    title = "Figure 12: Age-Based Price Differences by Party (in %)"
+  )
 ```
 
 
@@ -1958,15 +2124,15 @@ region_dat <- dir("data/reports", recursive = T, full.names = T) %>%
     # print(.x)
     if(str_detect(.x, "N-VA")){
       fin <- read_csv2(.x) %>% 
-      set_names(names(region_names)) %>% 
-      mutate(path = .x)
+        set_names(names(region_names)) %>% 
+        mutate(path = .x)
     } else {
       fin <- read_csv(.x) %>% 
-      set_names(names(region_names)) %>% 
-      mutate(path = .x)
+        set_names(names(region_names)) %>% 
+        mutate(path = .x)
     }
     return(fin %>% mutate_all(as.character))
-    })  %>% 
+  })  %>% 
   mutate(path = str_remove_all(path, "data/reports/|/overview.csv")) %>% 
   separate(path, into = c("cntry", "party"), sep = "/")   %>% 
   mutate(cost_per_result = fix_weird_numbers(cost_per_result)) %>% 
@@ -2009,6 +2175,43 @@ saveRDS(region_dat, file = "data/region_dat.rds")
 
 ```
 
+```{r,eval=F}
+# Install necessary packages if you haven't already
+# install.packages("rvest")
+# install.packages("dplyr")
+
+# Load the required libraries
+library(rvest)
+library(dplyr)
+
+# Specify the URL where the table is located
+url <- "https://www.bundeswahlen.gv.at/2024/eu/4.html"  # Replace with the actual URL
+
+# Read the HTML content of the webpage
+page <- read_html(url)
+
+# Extract the table from the webpage
+table_node <- page %>% 
+  html_node("section.table table")
+
+# Convert the table HTML into a dataframe
+election_table <- table_node %>%
+  html_table(fill = TRUE)
+
+# Display the scraped table
+print(election_table)
+
+# Clean the data (optional)
+# You may want to clean up non-numeric characters (like % and commas) 
+# and handle missing data.
+cleaned_table <- election_table %>%
+  mutate(across(everything(), ~gsub("[^\\d\\.,]", "", .))) %>%
+  mutate(across(everything(), ~as.numeric(gsub(",", ".", .))))
+
+# Print the cleaned table
+print(cleaned_table)
+
+```
 
 
 ```{r, eval = F}
@@ -2086,7 +2289,7 @@ gender_dat  %>%
   # coord_flip()  +
   geom_point(data = summ_dat, aes(price_idff, party)) +
   geom_segment(data = summ_dat, aes(x = 0, xend = price_idff))
-  # facet_wrap(~audience, scales = "free_x")
+# facet_wrap(~audience, scales = "free_x")
 ```
 
 
@@ -2138,9 +2341,9 @@ gender_dat %>%
   labs(
     x = "x",
     x = "",       subtitle = "Takeaway: Gender pricing depends on the country",
-       y = "\n⟵ Price Higher to Reach Women | Price Higher to Reach Men ⟶",
-    title = "Figure 12: Gender-Based Price Differences by Party (in %)"
-)
+    y = "\n⟵ Price Higher to Reach Women | Price Higher to Reach Men ⟶",
+    title = "Figure 13: Gender-Based Price Differences by Party (in %)"
+  )
 
 
 ```
@@ -2151,7 +2354,7 @@ library(lme4)
 fit1 <- lmer(price ~ (1|audience) + gender, data = gender_dat %>% filter(gender != "unknown"))
 fit2 <- lmer(price ~ (1|audience) + (1|cntry) + gender, data = gender_dat%>% filter(gender != "unknown"))
 fit3 <- lmer(price ~ (1|audience) + (1|cntry) + gender*party, data = gender_dat%>% filter(gender != "unknown"))
-          
+
 ```
 
 ```{r, fig.height=12, eval = F}
@@ -2170,7 +2373,7 @@ library(parameters)
 library(modelbased)
 
 contrasts_nobreak_h1abcde <- estimate_contrasts(fit3, contrast = c( "party", "gender"),
-                                at = c("party", "gender")) %>% 
+                                                at = c("party", "gender")) %>% 
   as.data.frame()  %>%  
   mutate(Contrast = paste(Level1, "-", Level2)) %>%  
   mutate(condition_comparison = fct_reorder(Contrast, Difference)) 
@@ -2179,17 +2382,17 @@ share_gg_dat <- contrasts_nobreak_h1abcde %>%
   as_tibble()  %>% 
   filter(
     str_count(condition_comparison, "VVD") == 2 |
-    str_count(condition_comparison, "GroenLinks") == 2 |
-    str_count(condition_comparison, "PvdA") == 2 
+      str_count(condition_comparison, "GroenLinks") == 2 |
+      str_count(condition_comparison, "PvdA") == 2 
   ) %>% 
   # filter(str_detect(Level1, "Environment excluded") & !str_detect(Level2, "Environment excluded")) %>% 
   filter(
     str_count(condition_comparison, "Environment") == 2 |
-    str_count(condition_comparison, "Economy") == 2 |
-    str_count(condition_comparison, "Politics") == 2 |
-    str_count(condition_comparison, "Education") == 2 
+      str_count(condition_comparison, "Economy") == 2 |
+      str_count(condition_comparison, "Politics") == 2 |
+      str_count(condition_comparison, "Education") == 2 
   ) %>% 
-
+  
   # in case the comparison is in wrong direction, change around
   mutate_at(vars(Difference, CI_low, CI_high), ~ifelse(str_detect(Level1, "excluded"), .x*-1, .x)) %>%
   mutate_at(vars(Difference, CI_low, CI_high), ~ifelse(str_detect(Level1, "Low"), .x*-1, .x)) %>%
@@ -2202,7 +2405,7 @@ share_gg_dat <- contrasts_nobreak_h1abcde %>%
     str_detect(condition_comparison, "Education") ~ "Higher Educated (vs. lower)",
     str_detect(condition_comparison, "Politics") ~ "Politics (vs. not)",
     str_detect(condition_comparison, "Environment") ~ "Environment (vs. not)"
-    )) %>% 
+  )) %>% 
   # mutate(condition_comparison = fct_reorder(condition_comparison, Difference)) %>% 
   mutate(condition_comparison = fct_relevel(condition_comparison, c("Higher Educated (vs. lower)", "Politics (vs. not)", "Economy (vs. not)", "Environment (vs. not)") %>% rev)) %>% 
   mutate(facet_title = "B: Differences in share of ad delivery per party") 
@@ -2259,28 +2462,6 @@ pairwise_contrasts %>%
 ```
 
 
-# Conclusions
-
-Our study reveals significant disparities in the pricing of political advertisements on Facebook across different countries and parties during the 2024 European Parliament elections. These disparities have implications for democratic processes, as they may influence the reach and effectiveness of political campaigns.
-
-Key findings include:
-
-+ Significant price differences exist across countries, with up to a 321% variance between the highest and lowest average prices.
-+ Within countries, parties experience price variations that can impact their potential voter reach significantly.
-+ Factors such as the number of page likes and historical ad spending show some correlation with ad pricing but are not solely determinative.
-+ Facebook's ad delivery algorithms, while optimized for efficiency, may inadvertently create inequalities in the political advertising landscape.
-
-
-# Recommendations
-
-+ Transparency: Social media platforms should provide greater transparency regarding their ad pricing algorithms to ensure a fair playing field for all political parties.
-
-+ Regulation: Policymakers may consider regulations that address algorithmic biases in political advertising to protect democratic processes.
-
-+ Further Research: Additional studies should be conducted to explore the impact of other factors, such as ad content and user engagement metrics, on ad pricing.
-
-
-
 
 # Methodology
 
@@ -2296,9 +2477,9 @@ The ads were placed in three different conditions:
 
 1. **Interest in Politics**: Ads targeted at people who had expressed interest in politics.
 2. **Below-University Education**: Ads targeted at people with below university-levels of education.
-3. **No Targeting**: Ads were shown to a random, general audience without any specific targeting.
+3. **No Targeting**: Ads were shown to a general audience (18+, entire country) without any specific targeting.
 
-We collected data on how much each party paid to reach 1,000 users (this is called CPM, or Cost Per Thousand impressions) and analyzed how these prices varied across the three conditions.
+We collected data on how much each party paid to reach 1,000 users and analyzed how these prices varied across the three conditions.
 
 
 - **Daily Budget**: €1 per ad
@@ -2309,225 +2490,295 @@ We collected data on how much each party paid to reach 1,000 users (this is call
 Each political party runs one ad campaign with several ad sets, each containing a single ad. This setup ensures that individual ads from the same party and targeting the same audience do not compete against each other. All ads are placed simultaneously, with the same budget, targeting the same audiences to control for temporal heterogeneity.
 
 
-## Sample Reduction
+# Researchers
 
-In the following we will only continue to work with parties that meet the following conditions.
-
-1. ads must have started at the same time (starting April 29th)
-2. ads must have run for 7 days
-3. total spent must have been within same range (i.e. +- 5 Euro)
-
+The research team for this study includes scholars from a range of academic institutions across Europe and North America. Their combined expertise spans algorihtmic governance, political communication, and electoral behavior. They made this comprehensive analysis of ad delivery algorithms in the 2024 European Parliament elections possible.
 
 ```{r}
- # overview %>% 
- #  filter(starts == as.Date("2024-04-29"))  %>% 
- #  filter(party == "Les Engagés")
-```
+library(gt)
 
+# Create a data frame with authors and affiliations
+authors_data <- tibble::tibble(
+  Name = c(
+    "Anamaria Dutceac Segesten", 
+    "Benjamin Guinaudeau", 
+    "Christina Gahn", 
+    "Claes de Vreese", 
+    "Fabio Votta", 
+    "James P. Cross", 
+    "Jan Zilinsky", 
+    "Linn Sandberg", 
+    "Mads Fuglsang Hove", 
+    "Marton Bene", 
+    "Ruth Dassonneville", 
+    "Simon Kruschinski", 
+    "Tom Dobber"
+  ),
+  Affiliation = c(
+    "Lund University", 
+    "New York University", 
+    "University of Vienna", 
+    "University of Amsterdam", 
+    "University of Amsterdam", 
+    "University College Dublin", 
+    "Technical University of Munich", 
+    "University of Bergen", 
+    "University of Amsterdam / University of Southern Denmark", 
+    "HUN-REN Centre for Social Sciences", 
+    "University of Montreal", 
+    "Johannes Gutenberg University Mainz", 
+    "University of Amsterdam"
+  )
+)
 
-This leaves us with **`r length(unique(ov$party))` parties** from **`r length(unique(overview$cntry))` regions/countries**.
-
-
-
-
-
-We are exploring two main hypotheses related to the pricing of political advertisements on Facebook across different countries and political parties. These hypotheses test whether political parties experience different costs when running ads, even when targeting the same audiences with the same advertisements.
-
-The first hypothesis focuses on *whether political ad pricing varies depen on the country* where the ads are being placed. 
-
-1. **H1**: The price for political advertisements differs across countries.
-
-
-We expect to observe significant price disparities between countries, with some paying much more for the same audience reach than others. This could be due to a combination of factors such as the number of advertisers, the overall demand for Facebook ads, and the size of the potential audience in each country.
-
-
-
-
-
-The second hypothesis examines *whether different political parties are charged different prices* for running the same ad, even within the same country.
-
-2. **H2**: Political parties are charged different prices for running the same political advertisements.
-
-
-One possible reason for this is Facebook’s ad delivery algorithm, which takes into account not only the content of the ad but also the advertiser’s account characteristics. Parties with more followers or those who have spent more money on ads in the past may be seen as more valuable customers, and thus Facebook may offer them lower prices as a way to encourage more spending. On the other hand, smaller parties or those with less digital presence might be charged more because Facebook has less data about them, making it harder to target their ads efficiently.
-
-
-
-In the following sections, we will formally test our hypotheses regarding these observed differences and explore potential factors driving these variations in ad pricing and reach across European countries.
-
-## Hypothesis Testing
-
-Our approach to analyzing all this data combined rigorous statistical testing with exploratory data analysis. Next, we test our two main hypotheses:
-
-To see if ad prices really do vary across countries (H1), we use a so-called a likelihood ratio test. We compare two statistical models: one that didn't take country into account at all, and one that did. If the model that included country as a factor fit our data significantly better, that would tell us that country really does matter when it comes to ad pricing.
-
-We use the same approach to test whether prices vary between parties (H2). We compared a model that only looked at countries to one that also included individual parties. Again, if including parties in the model made it fit our data better, that would suggest that different parties really do pay different prices for the same ads.
-
-We used multilevel modeling for these tests. This is a statistical technique that's well-suited for data like ours, where we have ads nested within parties, which are in turn nested within countries.
-
-Beyond just testing whether these differences exist, we also wanted to know how big they are. So we estimated the size of the effects that countries and parties have on ad pricing. This helps us understand not just whether these factors matter, but how much they matter.
-
-### Price Variance Across Countries (H1)
-
-```{r,eval = F}
-ov %>% 
-  group_by(cntry) %>% 
-  summarize(price = mean(price)) %>% 
-  mutate(sddd = sd(price))
-
-ov %>% summarize(price = mean(price))
-
-```
-
-```{r,eval = F}
-0.9712084 / 0.3574499
-```
-
-```{r,eval = F}
-# Calculate Coefficient of Variation for all ads
-cv_all_ads <- sd(ov$price) / mean(ov$price) * 100
-
-# Print result
-cat("Coefficient of Variation across all ads:", round(cv_all_ads, 2), "%\n")
-
-# You could also calculate it by country
-cv_by_country <- ov %>%
-  group_by(cntry, audience) %>%
-  summarize(cv = sd(price) / mean(price) * 100) %>% 
-  group_by(cntry) %>% 
-  summarize(cv = mean(cv))
-
-print(cv_by_country)
-
-mean(cv_by_country$cv)
-```
-
-
-
-We used a likelihood ratio test to compare a base model (without country variable) against a model with a random intercept for each country. The test determines whether including countries significantly increases the model's likelihood given the data.
-
-The ANOVA results comparing the two models show a significant improvement when including the country variable (p < 0.001), indicating that ad prices differ by country. The random intercept for country has a standard deviation of 0.357.
-
-This suggests that the country a political ad is placed in can substantially influence the cost, with prices varying by up to 36 Euro cents/1k users around the overall mean.
-
-```{r, results='asis', echo = F}
-
-library(flextable)
-fit0 <- lmer(price ~ (1|cntry), data = ov)
-
-fit1 <- lmer(price ~ (1|audience), data = ov)
-fit2 <- lmer(price ~ (1|audience) + (1|cntry), data = ov)
-fit3 <- lmer(price ~ (1|audience) + (1|cntry/party), data = ov)
-
-
-# Run ANOVAs 
-anova1 <- anova(fit1, fit2)
-anova2 <- anova(fit2, fit3)
-
-anova_text <- function(anova_result, mod1, mod2) {
-  # Extract relevant ANOVA information (Chi-sq statistic and p-value)
-  anova_chisq <- round(anova_result$Chisq[2], 2)
-  anova_pvalue <- format.pval(anova_result$`Pr(>Chisq)`[2], digits = 2, eps = 0.0001)
-  
-  paste0("LRT between Model ",mod1," and Model ",mod2,": Chi-sq = ", anova_chisq, 
-                          ", p-value = ", anova_pvalue)
-}
-
-
-# Extract estimates and standard errors from both fit1 and fit2
-tidy_fit1 <- broom.mixed::tidy(fit1)
-tidy_fit2 <- broom.mixed::tidy(fit2)
-tidy_fit3 <- broom.mixed::tidy(fit3)
-
-# Create a combined data frame with estimates and standard errors from both models
-combined_df <- tidy_fit1 %>%
-  select(term, group, estimate = estimate, std.error = std.error) %>%
-  rename(Estimate_Model_1 = estimate, SE_Model_1 = std.error) %>%
-  full_join(
-    tidy_fit2 %>%
-      select(term, group, estimate = estimate, std.error = std.error) %>%
-      rename(Estimate_Model_2 = estimate, SE_Model_2 = std.error)
+# Create a gt table
+authors_data %>%
+  gt() %>%
+  tab_header(
+    title = md("**Researchers and Affiliations**")
   ) %>%
-  full_join(
-    tidy_fit3 %>%
-      select(term, group, estimate = estimate, std.error = std.error) %>%
-      rename(Estimate_Model_3 = estimate, SE_Model_3 = std.error)
-  ) %>% 
-  mutate(
-    Model_1 = ifelse(
-      is.na(Estimate_Model_1), "", 
-      sprintf("%.3f%s", Estimate_Model_1, ifelse(is.na(SE_Model_1), "", sprintf(" (%.3f)", SE_Model_1)))
-    ),
-    Model_2 = ifelse(
-      is.na(Estimate_Model_2), "", 
-      sprintf("%.3f%s", Estimate_Model_2, ifelse(is.na(SE_Model_2), "", sprintf(" (%.3f)", SE_Model_2)))
-    ),
-    Model_3 = ifelse(
-      is.na(Estimate_Model_3), "", 
-      sprintf("%.3f%s", Estimate_Model_3, ifelse(is.na(SE_Model_3), "", sprintf(" (%.3f)", SE_Model_3)))
-    )
-  )  %>% 
-  mutate(term = ifelse(term == "sd__(Intercept)" & group == "audience", "sd__(audience)", term)) %>%
-  mutate(term = ifelse(term == "sd__(Intercept)" & group == "party:cntry", "sd__(party)", term)) %>%
-  select(term,  Model_1, Model_2, Model_3)
-
-# Create the flextable
-happens <- flextable(combined_df) %>%
-  set_header_labels(
-    term = "Coefficients",
-    Model_1 = "Baseline: Only Target Audience - Model 1 ",
-    Model_2 = "Country and Target Audience - Model 2 ",
-    Model_3 = "Country, Target Audience, and Party - Model 3 "
+  cols_label(
+    Name = "Researcher",
+    Affiliation = "Affiliation"
   ) %>%
-  
-  # Add a title to the table
-  set_caption("Table 2: Ad Price Variation by Country, Target Audience, and Party") %>%
-  
-  # Apply a clean theme
-  # theme_booktabs() %>%
-  
-  # Automatically adjust column widths for content
-  autofit() %>%
-  
-  # Manually add the descriptive names for the coefficients based on both the term and group
-  compose(j = "term", 
-          value = as_paragraph(
-            case_when(
-              term == "(Intercept)" ~ "Baseline Average Price",
-              term == "sd__(Intercept)" ~ "Country-Level Price Variation",
-              term == "sd__(cntry)" ~ "Country-Level Price Variation",  # Country-Level Random Effect
-              term == "sd__(audience)" ~ "Target Audience-Level Price Variation",  # Audience-Level Random Effect
-              term == "sd__(party)" ~ "Party-Level Price Variation",  # Audience-Level Random Effect
-              term == "sd__Observation" ~ "Within-Country Price Variation",
-              term == "sigma" ~ "Residual Variance",  # Fix for residual variance
-              TRUE ~ as.character(term)
-            )
-          )) %>%
-  # Add a layman's interpretation note
-  add_footer_lines("Note: Baseline price is the average starting price across all countries. Price variation terms represent how much prices vary between countries, target audience characteristics, and parties. The within-country variation shows how much prices vary within countries for reasons not captured by the model.")  %>%  # Add ANOVA results to the footer
-  add_footer_lines(anova_text(anova1, "1", "2"))   %>%  # Add ANOVA results to the footer
-  add_footer_lines(anova_text(anova2, "2", "3")) 
+  tab_options(
+    table.font.size = px(12),
+    table.width = pct(100)
+  ) %>%
+  # data_color(
+  #   columns = vars(Name,Affiliation),
+  #   colors = scales::col_factor(
+  #     palette = "Blues", domain = authors_data$Affiliation
+  #   )
+  # ) %>%
+  tab_style(
+    style = list(
+      cell_text(weight = "bold")
+    ),
+    locations = cells_column_labels(everything())
+  )
+
 ```
 
-```{r, results='hold'}
-happens %>% flextable::save_as_html(path = "html/table1.html")
+<!-- ## Sample Reduction -->
 
-HTML(rvest::read_html("html/table1.html") %>% as.character())
+<!-- In the following we will only continue to work with parties that meet the following conditions. -->
 
-# performance::r2_nakagawa(fit3)
-```
-
-
-Our statistical model suggests that country-level differences explain about 91.8% of the variance in ad prices. This is a huge effect, indicating that the country where an ad is placed is the single most important factor in determining its price.
+<!-- 1. ads must have started at the same time (starting April 29th) -->
+<!-- 2. ads must have run for 7 days -->
+<!-- 3. total spent must have been within same range (i.e. +- 5 Euro) -->
 
 
-### Price Variance Across Parties  (H2)
+<!-- ```{r} -->
+<!-- # overview %>%  -->
+<!-- #  filter(starts == as.Date("2024-04-29"))  %>%  -->
+<!-- #  filter(party == "Les Engagés") -->
+<!-- ``` -->
 
-We added a random intercept for parties and conducted an LR-Test to check if including party accounts significantly increases the model's likelihood given the data.
 
-Including party as a nested random effect within country significantly improves the model fit (p < 0.001). The random intercept for party nested within country has a standard deviation of 0.043, indicating some variability in ad pricing between parties within the same country.
+<!-- This leaves us with **`r length(unique(ov$party))` parties** from **`r length(unique(overview$cntry))` regions/countries**. -->
 
-The random intercept for party nested within country shows a standard deviation of 4.3 cents for reaching 1k users. Smaller than the country-level variability, this still indicates meaningful differences in ad pricing for different political parties within the same country. It is however also smaller what was found before in the Netherlands (6.5 cents).
+
+
+<!-- ## Hypotheses -->
+
+<!-- We are exploring two main hypotheses related to the pricing of political advertisements on Facebook across different countries and political parties. These hypotheses test whether political parties experience different costs when running ads, even when targeting the same audiences with the same advertisements. -->
+
+<!-- The first hypothesis focuses on *whether political ad pricing varies depen on the country* where the ads are being placed.  -->
+
+<!-- 1. **H1**: The price for political advertisements differs across countries. -->
+
+
+<!-- We expect to observe significant price disparities between countries, with some paying much more for the same audience reach than others. This could be due to a combination of factors such as the number of advertisers, the overall demand for Facebook ads, and the size of the potential audience in each country. -->
+
+
+
+
+
+<!-- The second hypothesis examines *whether different political parties are charged different prices* for running the same ad, even within the same country. -->
+
+<!-- 2. **H2**: Political parties are charged different prices for running the same political advertisements. -->
+
+
+<!-- One possible reason for this is Facebook’s ad delivery algorithm, which takes into account not only the content of the ad but also the advertiser’s account characteristics. Parties with more followers or those who have spent more money on ads in the past may be seen as more valuable customers, and thus Facebook may offer them lower prices as a way to encourage more spending. On the other hand, smaller parties or those with less digital presence might be charged more because Facebook has less data about them, making it harder to target their ads efficiently. -->
+
+
+
+<!-- In the following sections, we will formally test our hypotheses regarding these observed differences and explore potential factors driving these variations in ad pricing and reach across European countries. -->
+
+<!-- ## Hypothesis Testing -->
+
+<!-- Our approach to analyzing all this data combined rigorous statistical testing with exploratory data analysis. Next, we test our two main hypotheses: -->
+
+<!-- To see if ad prices really do vary across countries (H1), we use a so-called a likelihood ratio test. We compare two statistical models: one that didn't take country into account at all, and one that did. If the model that included country as a factor fit our data significantly better, that would tell us that country really does matter when it comes to ad pricing. -->
+
+<!-- We use the same approach to test whether prices vary between parties (H2). We compared a model that only looked at countries to one that also included individual parties. Again, if including parties in the model made it fit our data better, that would suggest that different parties really do pay different prices for the same ads. -->
+
+<!-- We used multilevel modeling for these tests. This is a statistical technique that's well-suited for data like ours, where we have ads nested within parties, which are in turn nested within countries. -->
+
+<!-- Beyond just testing whether these differences exist, we also wanted to know how big they are. So we estimated the size of the effects that countries and parties have on ad pricing. This helps us understand not just whether these factors matter, but how much they matter. -->
+
+<!-- ### Price Variance Across Countries (H1) -->
+
+<!-- ```{r,eval = F} -->
+<!-- ov %>%  -->
+<!--   group_by(cntry) %>%  -->
+<!--   summarize(price = mean(price)) %>%  -->
+<!--   mutate(sddd = sd(price)) -->
+
+<!-- ov %>% summarize(price = mean(price)) -->
+
+<!-- ``` -->
+
+<!-- ```{r,eval = F} -->
+<!-- 0.9712084 / 0.3574499 -->
+<!-- ``` -->
+
+<!-- ```{r,eval = F} -->
+<!-- # Calculate Coefficient of Variation for all ads -->
+<!-- cv_all_ads <- sd(ov$price) / mean(ov$price) * 100 -->
+
+<!-- # Print result -->
+<!-- cat("Coefficient of Variation across all ads:", round(cv_all_ads, 2), "%\n") -->
+
+<!-- # You could also calculate it by country -->
+<!-- cv_by_country <- ov %>% -->
+<!--   group_by(cntry, audience) %>% -->
+<!--   summarize(cv = sd(price) / mean(price) * 100) %>%  -->
+<!--   group_by(cntry) %>%  -->
+<!--   summarize(cv = mean(cv)) -->
+
+<!-- print(cv_by_country) -->
+
+<!-- mean(cv_by_country$cv) -->
+<!-- ``` -->
+
+
+
+<!-- We used a likelihood ratio test to compare a base model (without country variable) against a model with a random intercept for each country. The test determines whether including countries significantly increases the model's likelihood given the data. -->
+
+<!-- The ANOVA results comparing the two models show a significant improvement when including the country variable (p < 0.001), indicating that ad prices differ by country. The random intercept for country has a standard deviation of 0.357. -->
+
+<!-- This suggests that the country a political ad is placed in can substantially influence the cost, with prices varying by up to 36 Euro cents/1k users around the overall mean. -->
+
+<!-- ```{r, results='asis', echo = F} -->
+
+<!-- library(flextable) -->
+<!-- fit0 <- lmer(price ~ (1|cntry), data = ov) -->
+
+<!-- fit1 <- lmer(price ~ (1|audience), data = ov) -->
+<!-- fit2 <- lmer(price ~ (1|audience) + (1|cntry), data = ov) -->
+<!-- fit3 <- lmer(price ~ (1|audience) + (1|cntry/party), data = ov) -->
+
+
+<!-- # Run ANOVAs  -->
+<!-- anova1 <- anova(fit1, fit2) -->
+<!-- anova2 <- anova(fit2, fit3) -->
+
+<!-- anova_text <- function(anova_result, mod1, mod2) { -->
+<!--   # Extract relevant ANOVA information (Chi-sq statistic and p-value) -->
+<!--   anova_chisq <- round(anova_result$Chisq[2], 2) -->
+<!--   anova_pvalue <- format.pval(anova_result$`Pr(>Chisq)`[2], digits = 2, eps = 0.0001) -->
+
+<!--   paste0("LRT between Model ",mod1," and Model ",mod2,": Chi-sq = ", anova_chisq,  -->
+<!--          ", p-value = ", anova_pvalue) -->
+<!-- } -->
+
+
+<!-- # Extract estimates and standard errors from both fit1 and fit2 -->
+<!-- tidy_fit1 <- broom.mixed::tidy(fit1) -->
+<!-- tidy_fit2 <- broom.mixed::tidy(fit2) -->
+<!-- tidy_fit3 <- broom.mixed::tidy(fit3) -->
+
+<!-- # Create a combined data frame with estimates and standard errors from both models -->
+<!-- combined_df <- tidy_fit1 %>% -->
+<!--   select(term, group, estimate = estimate, std.error = std.error) %>% -->
+<!--   rename(Estimate_Model_1 = estimate, SE_Model_1 = std.error) %>% -->
+<!--   full_join( -->
+<!--     tidy_fit2 %>% -->
+<!--       select(term, group, estimate = estimate, std.error = std.error) %>% -->
+<!--       rename(Estimate_Model_2 = estimate, SE_Model_2 = std.error) -->
+<!--   ) %>% -->
+<!--   full_join( -->
+<!--     tidy_fit3 %>% -->
+<!--       select(term, group, estimate = estimate, std.error = std.error) %>% -->
+<!--       rename(Estimate_Model_3 = estimate, SE_Model_3 = std.error) -->
+<!--   ) %>%  -->
+<!--   mutate( -->
+<!--     Model_1 = ifelse( -->
+<!--       is.na(Estimate_Model_1), "",  -->
+<!--       sprintf("%.3f%s", Estimate_Model_1, ifelse(is.na(SE_Model_1), "", sprintf(" (%.3f)", SE_Model_1))) -->
+<!--     ), -->
+<!--     Model_2 = ifelse( -->
+<!--       is.na(Estimate_Model_2), "",  -->
+<!--       sprintf("%.3f%s", Estimate_Model_2, ifelse(is.na(SE_Model_2), "", sprintf(" (%.3f)", SE_Model_2))) -->
+<!--     ), -->
+<!--     Model_3 = ifelse( -->
+<!--       is.na(Estimate_Model_3), "",  -->
+<!--       sprintf("%.3f%s", Estimate_Model_3, ifelse(is.na(SE_Model_3), "", sprintf(" (%.3f)", SE_Model_3))) -->
+<!--     ) -->
+<!--   )  %>%  -->
+<!--   mutate(term = ifelse(term == "sd__(Intercept)" & group == "audience", "sd__(audience)", term)) %>% -->
+<!--   mutate(term = ifelse(term == "sd__(Intercept)" & group == "party:cntry", "sd__(party)", term)) %>% -->
+<!--   select(term,  Model_1, Model_2, Model_3) -->
+
+<!-- # Create the flextable -->
+<!-- happens <- flextable(combined_df) %>% -->
+<!--   set_header_labels( -->
+<!--     term = "Coefficients", -->
+<!--     Model_1 = "Baseline: Only Target Audience - Model 1 ", -->
+<!--     Model_2 = "Country and Target Audience - Model 2 ", -->
+<!--     Model_3 = "Country, Target Audience, and Party - Model 3 " -->
+<!--   ) %>% -->
+
+<!--   # Add a title to the table -->
+<!--   set_caption("Table 2: Ad Price Variation by Country, Target Audience, and Party") %>% -->
+
+<!--   # Apply a clean theme -->
+<!--   # theme_booktabs() %>% -->
+
+<!--   # Automatically adjust column widths for content -->
+<!--   autofit() %>% -->
+
+<!--   # Manually add the descriptive names for the coefficients based on both the term and group -->
+<!--   compose(j = "term",  -->
+<!--           value = as_paragraph( -->
+<!--             case_when( -->
+<!--               term == "(Intercept)" ~ "Baseline Average Price", -->
+<!--               term == "sd__(Intercept)" ~ "Country-Level Price Variation", -->
+<!--               term == "sd__(cntry)" ~ "Country-Level Price Variation",  # Country-Level Random Effect -->
+<!--               term == "sd__(audience)" ~ "Target Audience-Level Price Variation",  # Audience-Level Random Effect -->
+<!--               term == "sd__(party)" ~ "Party-Level Price Variation",  # Audience-Level Random Effect -->
+<!--               term == "sd__Observation" ~ "Within-Country Price Variation", -->
+<!--               term == "sigma" ~ "Residual Variance",  # Fix for residual variance -->
+<!--               TRUE ~ as.character(term) -->
+<!--             ) -->
+<!--           )) %>% -->
+<!--   # Add a layman's interpretation note -->
+<!--   add_footer_lines("Note: Baseline price is the average starting price across all countries. Price variation terms represent how much prices vary between countries, target audience characteristics, and parties. The within-country variation shows how much prices vary within countries for reasons not captured by the model.")  %>%  # Add ANOVA results to the footer -->
+<!--   add_footer_lines(anova_text(anova1, "1", "2"))   %>%  # Add ANOVA results to the footer -->
+<!--   add_footer_lines(anova_text(anova2, "2", "3"))  -->
+<!-- ``` -->
+
+<!-- ```{r, results='hold'} -->
+<!-- happens %>% flextable::save_as_html(path = "html/table1.html") -->
+
+<!-- HTML(rvest::read_html("html/table1.html") %>% as.character()) -->
+
+<!-- # performance::r2_nakagawa(fit3) -->
+<!-- ``` -->
+
+
+<!-- Our statistical model suggests that country-level differences explain about 91.8% of the variance in ad prices. This is a huge effect, indicating that the country where an ad is placed is the single most important factor in determining its price. -->
+
+
+<!-- ### Price Variance Across Parties  (H2) -->
+
+<!-- We added a random intercept for parties and conducted an LR-Test to check if including party accounts significantly increases the model's likelihood given the data. -->
+
+<!-- Including party as a nested random effect within country significantly improves the model fit (p < 0.001). The random intercept for party nested within country has a standard deviation of 0.043, indicating some variability in ad pricing between parties within the same country. -->
+
+<!-- The random intercept for party nested within country shows a standard deviation of 4.3 cents for reaching 1k users. Smaller than the country-level variability, this still indicates meaningful differences in ad pricing for different political parties within the same country. It is however also smaller what was found before in the Netherlands (6.5 cents). -->
 
 
 
